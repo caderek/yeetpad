@@ -1,0 +1,33 @@
+:root {
+  color-scheme: dark;
+
+  --font-sans: system-ui;
+  --font-mono: monospace;
+
+  --font-xs: 0.75rem;
+  --font-s: 0.875rem;
+  --font-m: 1rem;
+  --font-l: 1.5rem;
+  --font-xl: 2rem;
+
+  --space-xs: 4px;
+  --space-s: 8px;
+  --space-m: 16px;
+  --space-l: 32px;
+  --space-xl: 64px;
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  font-family: var(--font-sans);
+  font-size: var(--font-m);
+}
+
+input {
+  border-radius: var(--space-m);
+}

@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+section {
+  text-align: center;
+  padding: 1rem;
+}
+
+input,
+button {
+  padding: var(--space-s);
+  font-size: var(--font-l);
+  font-family: var(--font-mono);
+}
