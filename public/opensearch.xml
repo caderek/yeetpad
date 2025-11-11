@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Yeetpad Search</ShortName>
+  <LongName>Yeetpad.org Web Search</LongName>
+  <Description>Search the web with Yeetpad</Description>
+  <Tags>yeetpad search engine, web, search, internet, general</Tags>
+  <Contact>contact@yeetpad.org</Contact>
+  <Url type="text/html"
+       template="http://yeetpad.org/?q={searchTerms}"/>
+  <Image height="64" width="64" type="image/png">http://yeetpad.org/icons/search_64p.png</Image>
+  <Image height="32" width="32" type="image/png">http://yeetpad.org/icons/search_32p.png</Image>
+  <Image height="16" width="16" type="image/png">http://yeetpad.org/icons/search_16p.png</Image>
+  <Query role="example" searchTerms="cat" />
+</OpenSearchDescription>

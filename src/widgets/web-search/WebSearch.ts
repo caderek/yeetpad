@@ -3,6 +3,22 @@ import css from "./WebSearch.css?raw"
 
 import type { WebComponentLifecycle } from "../../common-types/web-components"
 
+import {
+  getGoogleWebSearchURL,
+  getGoogleAISearchURL,
+  getGoogleDefaultSearchURL,
+} from "./providers/google"
+import { getRedditSearchURL } from "./providers/reddit"
+import { getCHatGPTSearchURL } from "./providers/chatgpt"
+
+const getSerachUrl = {
+  google: getGoogleDefaultSearchURL,
+  google_web: getGoogleWebSearchURL,
+  google_ai: getGoogleAISearchURL,
+  reddit: getRedditSearchURL,
+  chatgpt: getCHatGPTSearchURL,
+}
+
 class WebSearch extends HTMLElement implements Partial<WebComponentLifecycle> {
   constructor() {
     super()
@@ -29,15 +45,7 @@ class WebSearch extends HTMLElement implements Partial<WebComponentLifecycle> {
     const formData = new FormData(target)
 
     const searchPhrase = ((formData.get("web-search") ?? "") as string).trim()
-
-    const searchParams = new URLSearchParams()
-    searchParams.set("q", searchPhrase)
-    searchParams.set("udm", "14") // force non-AI results
-
-    const searchUrl = new URL("https://google.com/search")
-    searchUrl.search = searchParams.toString()
-
-    location.href = searchUrl.toString()
+    location.href = getSerachUrl.google_web(searchPhrase)
   }
 
   #registerHandlers() {
