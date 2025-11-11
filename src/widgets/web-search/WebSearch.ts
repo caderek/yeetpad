@@ -28,6 +28,7 @@ class WebSearch extends HTMLElement implements Partial<WebComponentLifecycle> {
   }
 
   connectedCallback(): void {
+    this.#handleUrlSearch()
     const shadow = this.attachShadow({ mode: "open" })
     shadow.innerHTML = `<style>${css}</style>${html}`
     shadow.querySelector("input")?.focus()
@@ -44,8 +45,17 @@ class WebSearch extends HTMLElement implements Partial<WebComponentLifecycle> {
     const target = e.currentTarget as HTMLFormElement
     const formData = new FormData(target)
 
-    const searchPhrase = ((formData.get("web-search") ?? "") as string).trim()
-    location.href = getSerachUrl.google_web(searchPhrase)
+    const query = ((formData.get("web-search") ?? "") as string).trim()
+    location.href = getSerachUrl.google_web(query)
+  }
+
+  #handleUrlSearch() {
+    const search = new URLSearchParams(location.search)
+    const query = (search.get("q") ?? "").trim()
+
+    if (query) {
+      location.href = getSerachUrl.google_web(query)
+    }
   }
 
   #registerHandlers() {
