@@ -3,23 +3,12 @@ import css from "./WebSearch.css?raw"
 
 import type { WebComponentLifecycle } from "../../common-types/web-components"
 
-import {
-  getGoogleWebSearchURL,
-  getGoogleAISearchURL,
-  getGoogleDefaultSearchURL,
-} from "./providers/google"
-import { getRedditSearchURL } from "./providers/reddit"
-import { getCHatGPTSearchURL } from "./providers/chatgpt"
+import { getSerachUrl } from "./getSearchUrl"
 
-const getSerachUrl = {
-  google: getGoogleDefaultSearchURL,
-  google_web: getGoogleWebSearchURL,
-  google_ai: getGoogleAISearchURL,
-  reddit: getRedditSearchURL,
-  chatgpt: getCHatGPTSearchURL,
-}
-
-class WebSearch extends HTMLElement implements Partial<WebComponentLifecycle> {
+export class WebSearch
+  extends HTMLElement
+  implements Partial<WebComponentLifecycle>
+{
   constructor() {
     super()
 
@@ -70,5 +59,3 @@ class WebSearch extends HTMLElement implements Partial<WebComponentLifecycle> {
     )
   }
 }
-
-customElements.define("web-search", WebSearch)
