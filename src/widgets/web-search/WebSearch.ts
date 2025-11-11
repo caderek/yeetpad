@@ -17,7 +17,6 @@ export class WebSearch
   }
 
   connectedCallback(): void {
-    this.#handleUrlSearch()
     const shadow = this.attachShadow({ mode: "open" })
     shadow.innerHTML = `<style>${css}</style>${html}`
     shadow.querySelector("input")?.focus()
@@ -36,15 +35,6 @@ export class WebSearch
 
     const query = ((formData.get("web-search") ?? "") as string).trim()
     location.href = getSerachUrl.google_web(query)
-  }
-
-  #handleUrlSearch() {
-    const search = new URLSearchParams(location.search)
-    const query = (search.get("q") ?? "").trim()
-
-    if (query) {
-      location.href = getSerachUrl.google_web(query)
-    }
   }
 
   #registerHandlers() {
