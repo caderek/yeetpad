@@ -4,12 +4,32 @@
 
 section {
   text-align: center;
-  padding: 1rem;
+  padding: var(--space-l);
+  background: var(--color-bg-lc);
+  border-radius: var(--space-s);
+  box-shadow: 0 0.5rem 1rem var(--color-bg-hc);
 }
 
 input,
 button {
-  padding: var(--space-s);
+  padding: var(--space-m);
   font-size: var(--font-l);
   font-family: var(--font-mono);
+  border: solid 1px var(--color-bg-lc);
+  border-radius: var(--space-xs);
+}
+
+input {
+  background: var(--color-bg);
+  box-shadow: inset 0 1rem 1.25rem var(--color-bg-hc);
+}
+
+input:focus {
+  outline: none;
+  border-bottom: solid 1px var(--color-bg-primary);
+}
+
+button {
+  background: var(--color-bg-primary);
+  color: var(--color-fg-primary);
 }

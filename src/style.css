@@ -15,7 +15,24 @@
   --space-m: 16px;
   --space-l: 32px;
   --space-xl: 64px;
+
+  --color-fg: #eee;
+  --color-fg-hc: #fff;
+  --color-fg-lc: #ddd;
+  --color-bg: #1a1d25;
+  --color-bg-hc: #191b1f;
+  --color-bg-lc: #20232b;
+  --color-fg-primary: var(--color-bg);
+  --color-bg-primary: #f93d5f;
+  --color-bg-secondary: #00adb5;
 }
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 html,
 body {
   height: 100%;
@@ -26,8 +43,5 @@ body {
   place-content: center;
   font-family: var(--font-sans);
   font-size: var(--font-m);
-}
-
-input {
-  border-radius: var(--space-m);
+  background: var(--color-bg);
 }
