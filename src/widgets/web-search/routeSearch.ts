@@ -7,12 +7,12 @@ export function routeSearch(query: string) {
     return getSerachUrl.chatgpt(query.slice(0, -1))
   }
 
-  if (query.endsWith(">")) {
-    return getSerachUrl.youtube(query.slice(0, -1))
-  }
-
   if (query.endsWith(">>")) {
     return getSerachUrl.boredflix(query.slice(0, -2))
+  }
+
+  if (query.endsWith(">")) {
+    return getSerachUrl.youtube(query.slice(0, -1))
   }
 
   if (query.endsWith("!")) {
