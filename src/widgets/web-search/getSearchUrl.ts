@@ -6,6 +6,7 @@ import {
 import { getRedditSearchURL } from "./providers/reddit"
 import { getCHatGPTSearchURL } from "./providers/chatgpt"
 import { getYoutubeSearchURL } from "./providers/youtube"
+import { getBoredflixSearchURL } from "./providers/boredflix"
 
 export const getSerachUrl = {
   google: getGoogleDefaultSearchURL,
@@ -14,4 +15,5 @@ export const getSerachUrl = {
   reddit: getRedditSearchURL,
   chatgpt: getCHatGPTSearchURL,
   youtube: getYoutubeSearchURL,
+  boredflix: getBoredflixSearchURL,
 }

@@ -2,17 +2,22 @@ import { getSerachUrl } from "./getSearchUrl"
 
 export function routeSearch(query: string) {
   query = query.trim()
-  const lastChar = query.at(-1)
-  const queryWithoutlastChar = query.slice(0, -1)
 
-  switch (lastChar) {
-    case "?":
-      return getSerachUrl.chatgpt(query)
-    case ">":
-      return getSerachUrl.youtube(queryWithoutlastChar)
-    case "!":
-      return getSerachUrl.reddit(queryWithoutlastChar)
-    default:
-      return getSerachUrl.google_web(query)
+  if (query.endsWith("?")) {
+    return getSerachUrl.chatgpt(query.slice(0, -1))
   }
+
+  if (query.endsWith(">")) {
+    return getSerachUrl.youtube(query.slice(0, -1))
+  }
+
+  if (query.endsWith(">>")) {
+    return getSerachUrl.boredflix(query.slice(0, -2))
+  }
+
+  if (query.endsWith("!")) {
+    return getSerachUrl.reddit(query.slice(0, -1))
+  }
+
+  return getSerachUrl.google_web(query)
 }
