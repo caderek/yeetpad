@@ -3,7 +3,7 @@ import css from "./WebSearch.css?raw"
 
 import type { WebComponentLifecycle } from "../../common-types/web-components"
 
-import { getSerachUrl } from "./getSearchUrl"
+import { routeSearch } from "./routeSearch"
 
 export class WebSearch
   extends HTMLElement
@@ -34,7 +34,7 @@ export class WebSearch
     const formData = new FormData(target)
 
     const query = ((formData.get("web-search") ?? "") as string).trim()
-    location.href = getSerachUrl.google_web(query)
+    location.href = routeSearch(query)
   }
 
   #registerHandlers() {

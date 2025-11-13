@@ -1,17 +1,14 @@
-import { getSerachUrl } from "./getSearchUrl"
+import { routeSearch } from "./routeSearch"
 
 export function handleUrlSearch() {
   const search = new URLSearchParams(location.search)
   const query = (search.get("q") ?? "").trim()
 
   if (!query) {
-    return
+    return false
   }
 
-  if (query.endsWith("?")) {
-    location.href = getSerachUrl.chatgpt(query)
-    return
-  }
+  location.href = routeSearch(query)
 
-  location.href = getSerachUrl.google_web(query)
+  return true
 }
