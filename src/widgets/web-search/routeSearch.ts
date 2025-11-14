@@ -10,14 +10,23 @@ function getDirectUrl(query: string) {
   try {
     const hasProtocol = /^https?:\/\//.test(query)
     const url = new URL(`${hasProtocol ? "" : "https://"}${query}`)
-    const tld = url.hostname.split(".").at(-1)
 
-    if (tld && (TOP_LEVEL_DOMAINS.has(tld) || tld === "localhost")) {
+    const chunks = url.hostname.split(".")
+    const tld = chunks.at(-1)
+
+    if (!tld) {
+      return null
+    }
+
+    if (
+      (chunks.length > 1 && TOP_LEVEL_DOMAINS.has(tld)) ||
+      tld === "localhost"
+    ) {
       return url.toString()
     }
   } catch {}
 
-  return false
+  return null
 }
 
 export function routeSearch(query: string) {
@@ -28,8 +37,12 @@ export function routeSearch(query: string) {
     return directUrl
   }
 
+  if (query.endsWith("??")) {
+    return getSerachUrl.wikipedia(query.slice(0, -2))
+  }
+
   if (query.endsWith("?")) {
-    return getSerachUrl.chatgpt(query.slice(0, -1))
+    return getSerachUrl.google_ai(query.slice(0, -1))
   }
 
   if (query.endsWith(">>")) {

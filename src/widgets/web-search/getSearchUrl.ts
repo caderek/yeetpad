@@ -9,6 +9,7 @@ import { getYoutubeSearchURL } from "./providers/youtube"
 import { getBoredflixSearchURL } from "./providers/boredflix"
 import { getSpotifySearchURL } from "./providers/spotify"
 import { getGoodreadsSearchURL } from "./providers/goodreads"
+import { getWikipediaSearchURL } from "./providers/wikipedia"
 
 export const getSerachUrl = {
   google: getGoogleDefaultSearchURL,
@@ -20,4 +21,5 @@ export const getSerachUrl = {
   boredflix: getBoredflixSearchURL,
   spotify: getSpotifySearchURL,
   goodreads: getGoodreadsSearchURL,
+  wikipedia: getWikipediaSearchURL,
 }
