@@ -11,6 +11,8 @@ import { getSpotifySearchURL } from "./providers/spotify"
 import { getGoodreadsSearchURL } from "./providers/goodreads"
 import { getWikipediaSearchURL } from "./providers/wikipedia"
 import { getGithubSearchURL } from "./providers/github"
+import { getNpmSearchURL } from "./providers/npm"
+import { getGmailSearchURL } from "./providers/gmail"
 
 export const getSerachUrl = {
   google: getGoogleDefaultSearchURL,
@@ -24,4 +26,6 @@ export const getSerachUrl = {
   goodreads: getGoodreadsSearchURL,
   wikipedia: getWikipediaSearchURL,
   github: getGithubSearchURL,
+  npm: getNpmSearchURL,
+  gmail: getGmailSearchURL,
 }

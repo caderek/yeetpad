@@ -65,8 +65,16 @@ export function routeSearch(query: string) {
     return getSerachUrl.github(query.slice(0, -1))
   }
 
+  if (query.endsWith(":")) {
+    return getSerachUrl.npm(query.slice(0, -1))
+  }
+
   if (query.endsWith("!")) {
     return getSerachUrl.reddit(query.slice(0, -1))
+  }
+
+  if (query.endsWith("@")) {
+    return getSerachUrl.gmail(query.slice(0, -1))
   }
 
   return getSerachUrl.google_web(query)

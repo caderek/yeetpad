@@ -6,12 +6,5 @@ import { WebSearch } from "./widgets/web-search/WebSearch"
 if (!handleUrlSearch()) {
   console.log("Yeet!")
 
-  window.addEventListener("popstate", function (event) {
-    // 'event.state' holds the data passed to pushState/replaceState
-    console.log("Browser history navigation occurred!")
-    console.log("New URL:", window.location.href)
-    console.log("State data:", event.state)
-  })
-
   customElements.define("web-search", WebSearch)
 }
