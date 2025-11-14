@@ -10,6 +10,7 @@ import { getBoredflixSearchURL } from "./providers/boredflix"
 import { getSpotifySearchURL } from "./providers/spotify"
 import { getGoodreadsSearchURL } from "./providers/goodreads"
 import { getWikipediaSearchURL } from "./providers/wikipedia"
+import { getGithubSearchURL } from "./providers/github"
 
 export const getSerachUrl = {
   google: getGoogleDefaultSearchURL,
@@ -22,4 +23,5 @@ export const getSerachUrl = {
   spotify: getSpotifySearchURL,
   goodreads: getGoodreadsSearchURL,
   wikipedia: getWikipediaSearchURL,
+  github: getGithubSearchURL,
 }
