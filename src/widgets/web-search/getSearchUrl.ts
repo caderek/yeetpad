@@ -13,6 +13,7 @@ import { getWikipediaSearchURL } from "./providers/wikipedia"
 import { getGithubSearchURL } from "./providers/github"
 import { getNpmSearchURL } from "./providers/npm"
 import { getGmailSearchURL } from "./providers/gmail"
+import { getStartpageSearchURL } from "./providers/startpage"
 
 export const getSerachUrl = {
   google: getGoogleDefaultSearchURL,
@@ -28,4 +29,5 @@ export const getSerachUrl = {
   github: getGithubSearchURL,
   npm: getNpmSearchURL,
   gmail: getGmailSearchURL,
+  startpage: getStartpageSearchURL,
 }

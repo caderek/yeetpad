@@ -77,5 +77,5 @@ export function routeSearch(query: string) {
     return getSerachUrl.gmail(query.slice(0, -1))
   }
 
-  return getSerachUrl.google_web(query)
+  return getSerachUrl.startpage(query)
 }
