@@ -73,6 +73,22 @@ export function routeSearch(query: string) {
     return getSerachUrl.reddit(query.slice(0, -1))
   }
 
+  if (query.endsWith("$")) {
+    return getSerachUrl.amazon(query.slice(0, -1))
+  }
+
+  if (query.endsWith(" ebay")) {
+    return getSerachUrl.ebay(query.slice(0, -5))
+  }
+
+  if (query.endsWith(" etsy")) {
+    return getSerachUrl.etsy(query.slice(0, -5))
+  }
+
+  if (query.endsWith(" twitter")) {
+    return getSerachUrl.twitter(query.slice(0, -8))
+  }
+
   if (query.endsWith("@")) {
     return getSerachUrl.gmail(query.slice(0, -1))
   }
