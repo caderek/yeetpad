@@ -28,6 +28,7 @@ import { getQwantSearchURL } from "./providers/qwant"
 import { getSearxSearchURL } from "./providers/searx"
 import { getYandexSearchURL } from "./providers/yandex"
 import { getEntertrainedSearchURL } from "./providers/entertrained"
+import { getBingSearchURL } from "./providers/bing"
 
 export type SearchProviderCategory =
   | "ai"
@@ -40,6 +41,7 @@ export type SearchProviderCategory =
 
 export const getSerachUrl = {
   amazon: getAmazonSearchURL,
+  bing: getBingSearchURL,
   boredflix: getBoredflixSearchURL,
   brave: getBraveSearchURL,
   chatgpt: getCHatGPTSearchURL,

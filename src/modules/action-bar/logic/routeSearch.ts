@@ -13,6 +13,10 @@ export function routeSearch(query: string) {
     return getSerachUrl.wikipedia(query.slice(0, -2))
   }
 
+  if (query.endsWith(" wiki")) {
+    return getSerachUrl.wikipedia(query.slice(0, -5))
+  }
+
   if (query.endsWith("?")) {
     return getSerachUrl.google_ai(query.slice(0, -1))
   }
@@ -25,28 +29,36 @@ export function routeSearch(query: string) {
     return getSerachUrl.youtube(query.slice(0, -1))
   }
 
-  if (query.endsWith("#")) {
-    return getSerachUrl.spotify(query.slice(0, -1))
+  if (query.endsWith(" youtube")) {
+    return getSerachUrl.youtube(query.slice(0, -8))
   }
 
-  if (query.endsWith("*")) {
-    return getSerachUrl.goodreads(query.slice(0, -1))
+  if (query.endsWith(" bing")) {
+    return getSerachUrl.bing(query.slice(0, -5))
   }
 
-  if (query.endsWith(";")) {
-    return getSerachUrl.github(query.slice(0, -1))
+  if (query.endsWith(" spotify")) {
+    return getSerachUrl.spotify(query.slice(0, -8))
   }
 
-  if (query.endsWith(":")) {
-    return getSerachUrl.npm(query.slice(0, -1))
+  if (query.endsWith(" goodreads")) {
+    return getSerachUrl.goodreads(query.slice(0, -10))
+  }
+
+  if (query.endsWith(" github")) {
+    return getSerachUrl.github(query.slice(0, -7))
+  }
+
+  if (query.endsWith(" npm")) {
+    return getSerachUrl.npm(query.slice(0, -4))
   }
 
   if (query.endsWith("!")) {
     return getSerachUrl.reddit(query.slice(0, -1))
   }
 
-  if (query.endsWith("$")) {
-    return getSerachUrl.amazon(query.slice(0, -1))
+  if (query.endsWith(" amazon")) {
+    return getSerachUrl.amazon(query.slice(0, -7))
   }
 
   if (query.endsWith(" ebay")) {
