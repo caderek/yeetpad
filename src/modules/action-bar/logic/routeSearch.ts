@@ -122,7 +122,7 @@ export function routeSearch(query: string) {
   }
 
   if (query.endsWith(" entertrained")) {
-    return getSerachUrl.duckduckgo(query.slice(0, -13))
+    return getSerachUrl.entertrained(query.slice(0, -13))
   }
 
   if (query.endsWith("@")) {
