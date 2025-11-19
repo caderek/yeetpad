@@ -1,11 +1,13 @@
-import html from "./WebSearch.html?raw"
-import css from "./WebSearch.css?raw"
+import html from "./ActionBar.html?raw"
+import css from "./ActionBar.css?raw"
 
 import type { WebComponentLifecycle } from "../../common-types/web-components"
 
-import { routeSearch } from "./routeSearch"
+import { routeSearch } from "./logic/routeSearch"
+import { iconsStylesheet } from "../../reusable-components/common-stylesheets"
+import { initializeStylesheet } from "../../utils/initializeStylesheet"
 
-export class WebSearch
+export class ActionBar
   extends HTMLElement
   implements Partial<WebComponentLifecycle>
 {
@@ -18,7 +20,9 @@ export class WebSearch
 
   connectedCallback(): void {
     const shadow = this.attachShadow({ mode: "open" })
-    shadow.innerHTML = `<style>${css}</style>${html}`
+    const stylesheet = initializeStylesheet(css)
+    shadow.adoptedStyleSheets = [stylesheet, iconsStylesheet]
+    shadow.innerHTML = html
     shadow.querySelector("input")?.focus()
     this.#registerHandlers()
   }
@@ -33,7 +37,7 @@ export class WebSearch
     const target = e.currentTarget as HTMLFormElement
     const formData = new FormData(target)
 
-    const query = ((formData.get("web-search") ?? "") as string).trim()
+    const query = ((formData.get("action-phrase") ?? "") as string).trim()
     location.href = routeSearch(query)
   }
 

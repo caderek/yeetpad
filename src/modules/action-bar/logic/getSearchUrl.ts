@@ -18,6 +18,15 @@ import { getAmazonSearchURL } from "./providers/amazon"
 import { getEbaySearchURL } from "./providers/ebay"
 import { getEtsySearchURL } from "./providers/etsy"
 import { getTwitterSearchURL } from "./providers/twitter"
+import { getBraveSearchURL } from "./providers/brave"
+import { getDuckduckgoSearchURL } from "./providers/duckduckgo"
+import { getEcosiaSearchURL } from "./providers/ecosia"
+import { getKagiSearchURL } from "./providers/kagi"
+import { getMarginaliaSearchURL } from "./providers/marginalia"
+import { getMojeekSearchURL } from "./providers/mojeek"
+import { getQwantSearchURL } from "./providers/qwant"
+import { getSearxSearchURL } from "./providers/searx"
+import { getYandexSearchURL } from "./providers/yandex"
 
 export type SearchProviderCategory =
   | "ai"
@@ -29,22 +38,31 @@ export type SearchProviderCategory =
   | "social"
 
 export const getSerachUrl = {
+  amazon: getAmazonSearchURL,
+  boredflix: getBoredflixSearchURL,
+  brave: getBraveSearchURL,
+  chatgpt: getCHatGPTSearchURL,
+  duckduckgo: getDuckduckgoSearchURL,
+  ebay: getEbaySearchURL,
+  ecosia: getEcosiaSearchURL,
+  etsy: getEtsySearchURL,
+  github: getGithubSearchURL,
+  gmail: getGmailSearchURL,
+  goodreads: getGoodreadsSearchURL,
   google: getGoogleDefaultSearchURL,
   google_web: getGoogleWebSearchURL,
   google_ai: getGoogleAISearchURL,
-  reddit: getRedditSearchURL,
-  chatgpt: getCHatGPTSearchURL,
-  youtube: getYoutubeSearchURL,
-  boredflix: getBoredflixSearchURL,
-  spotify: getSpotifySearchURL,
-  goodreads: getGoodreadsSearchURL,
-  wikipedia: getWikipediaSearchURL,
-  github: getGithubSearchURL,
+  kagi: getKagiSearchURL,
+  mariginalia: getMarginaliaSearchURL,
+  mojeek: getMojeekSearchURL,
   npm: getNpmSearchURL,
-  gmail: getGmailSearchURL,
+  qwant: getQwantSearchURL,
+  reddit: getRedditSearchURL,
+  searx: getSearxSearchURL,
+  spotify: getSpotifySearchURL,
   startpage: getStartpageSearchURL,
-  amazon: getAmazonSearchURL,
-  ebay: getEbaySearchURL,
-  etsy: getEtsySearchURL,
   twitter: getTwitterSearchURL,
+  wikipedia: getWikipediaSearchURL,
+  yandex: getYandexSearchURL,
+  youtube: getYoutubeSearchURL,
 }

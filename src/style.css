@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Icons";
+  src:
+    url("/icons/icons.woff2") format("woff2"),
+    url("/icons/icons.woff") format("woff");
+}
+
 :root {
   color-scheme: dark;
 
@@ -19,11 +26,13 @@
   --color-fg: #eee;
   --color-fg-hc: #fff;
   --color-fg-lc: #ddd;
-  --color-bg: #1a1d25;
-  --color-bg-hc: #191b1f;
-  --color-bg-lc: #20232b;
+  --color-bg-min: hsl(223deg, 11%, 16%);
+  --color-bg-low: hsl(223deg, 11%, 14%);
+  --color-bg-mid: hsl(223deg, 11%, 12%);
+  --color-bg-high: hsl(223deg, 11%, 10%);
+  --color-bg-max: hsl(223deg, 11%, 9%);
   --color-fg-primary: var(--color-bg);
-  --color-bg-primary: #f93d5f;
+  --color-bg-primary: oklch(54.41% 0.214 19.06);
   --color-bg-secondary: #00adb5;
 }
 
@@ -39,9 +48,8 @@ body {
 }
 
 body {
-  display: grid;
-  place-content: center;
   font-family: var(--font-sans);
   font-size: var(--font-m);
-  background: var(--color-bg);
+  background: var(--color-bg-mid);
+  padding: var(--space-m);
 }

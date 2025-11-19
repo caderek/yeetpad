@@ -1,10 +1,11 @@
 import "./style.css"
-import { handleUrlSearch } from "./widgets/web-search/handleUrlSearch"
-import "./widgets/web-search/WebSearch"
-import { WebSearch } from "./widgets/web-search/WebSearch"
+import { handleUrlSearch } from "./modules/action-bar/logic/handleUrlSearch"
+import { ActionBar } from "./modules/action-bar/ActionBar"
+import { TextInput } from "./reusable-components/text-input/TextInput"
 
 if (!handleUrlSearch()) {
   console.log("Yeet!")
 
-  customElements.define("web-search", WebSearch)
+  customElements.define("action-bar", ActionBar)
+  customElements.define("text-input", TextInput)
 }
