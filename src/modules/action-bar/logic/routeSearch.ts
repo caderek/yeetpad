@@ -109,6 +109,10 @@ export function routeSearch(query: string) {
     return getSerachUrl.duckduckgo(query.slice(0, -11))
   }
 
+  if (query.endsWith(" entertrained")) {
+    return getSerachUrl.duckduckgo(query.slice(0, -13))
+  }
+
   if (query.endsWith("@")) {
     return getSerachUrl.gmail(query.slice(0, -1))
   }

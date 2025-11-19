@@ -27,6 +27,7 @@ import { getMojeekSearchURL } from "./providers/mojeek"
 import { getQwantSearchURL } from "./providers/qwant"
 import { getSearxSearchURL } from "./providers/searx"
 import { getYandexSearchURL } from "./providers/yandex"
+import { getEntertrainedSearchURL } from "./providers/entertrained"
 
 export type SearchProviderCategory =
   | "ai"
@@ -45,6 +46,7 @@ export const getSerachUrl = {
   duckduckgo: getDuckduckgoSearchURL,
   ebay: getEbaySearchURL,
   ecosia: getEcosiaSearchURL,
+  entertrained: getEntertrainedSearchURL,
   etsy: getEtsySearchURL,
   github: getGithubSearchURL,
   gmail: getGmailSearchURL,
