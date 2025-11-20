@@ -1,8 +1,14 @@
 import { getDirectUrl } from "./getDirectUrl"
 import { getSerachUrl } from "./getSearchUrl"
+import { isEmail } from "./isEmail"
 
 export function routeSearch(query: string) {
   query = query.trim()
+
+  if (isEmail(query)) {
+    return `mailto:${query}`
+  }
+
   const directUrl = getDirectUrl(query)
 
   if (directUrl) {
