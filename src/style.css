@@ -23,9 +23,11 @@
   --space-l: 32px;
   --space-xl: 64px;
 
-  --color-fg: #eee;
-  --color-fg-hc: #fff;
-  --color-fg-lc: #ddd;
+  --color-fg-min: hsl(223deg, 11%, 50%);
+  --color-fg-low: hsl(223deg, 11%, 60%);
+  --color-fg-mid: hsl(223deg, 11%, 70%);
+  --color-fg-high: hsl(223deg, 11%, 80%);
+  --color-fg-max: hsl(223deg, 11%, 90%);
   --color-bg-min: hsl(223deg, 11%, 16%);
   --color-bg-low: hsl(223deg, 11%, 14%);
   --color-bg-mid: hsl(223deg, 11%, 12%);

@@ -20,6 +20,7 @@ header {
   box-shadow: inset 0 1rem 1.25rem var(--color-bg-max);
   display: grid;
   grid-template-columns: 4rem 1fr 4rem;
+  max-width: 100%;
 }
 
 .bar:has(input:focus) {
@@ -29,6 +30,7 @@ header {
 .bar i {
   font-size: 0;
   padding: var(--space-m);
+  color: var(--color-fg-low);
 }
 
 .bar i::before {
@@ -44,16 +46,20 @@ input {
   font-size: var(--font-l);
   font-family: var(--font-mono);
   background: transparent;
+  width: 100%;
 }
 
 input:focus {
   outline: none;
 }
 
+input::placeholder {
+  color: var(--color-fg-min);
+}
+
 .bar button {
   font-size: 0;
   background: transparent;
-  color: var(--color-bg-primary);
   padding: 0;
   cursor: pointer;
   transition-duration: 100ms;
@@ -61,4 +67,36 @@ input:focus {
 
 .bar button:hover {
   transform: scale(1.2);
+}
+
+.bar button i {
+  color: var(--color-bg-primary);
+}
+
+@media (max-width: 59.99rem) {
+  section {
+    padding: 0;
+  }
+
+  .bar {
+    background: var(--color-bg-high);
+    border: solid 2px var(--color-bg-min);
+    border-radius: var(--space-s);
+    box-shadow: inset 0 1rem 1.25rem var(--color-bg-max);
+    display: grid;
+    grid-template-columns: 2.5rem 1fr 2.5rem;
+    max-width: 100%;
+  }
+
+  input {
+    font-size: var(--font-m);
+  }
+
+  .bar i {
+    padding: var(--space-s);
+  }
+
+  .bar i::before {
+    font-size: var(--font-l);
+  }
 }
