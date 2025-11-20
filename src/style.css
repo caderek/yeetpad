@@ -54,4 +54,5 @@ body {
   font-size: var(--font-m);
   background: var(--color-bg-mid);
   padding: var(--space-m);
+  color: var(--color-fg-mid);
 }
