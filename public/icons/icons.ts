@@ -4,7 +4,8 @@ export type IconsId =
   | "search"
   | "mail"
   | "forward"
-  | "flash";
+  | "flash"
+  | "calc";
 
 export type IconsKey =
   | "Web"
@@ -12,7 +13,8 @@ export type IconsKey =
   | "Search"
   | "Mail"
   | "Forward"
-  | "Flash";
+  | "Flash"
+  | "Calc";
 
 export enum Icons {
   Web = "web",
@@ -21,6 +23,7 @@ export enum Icons {
   Mail = "mail",
   Forward = "forward",
   Flash = "flash",
+  Calc = "calc",
 }
 
 export const ICONS_CODEPOINTS: { [key in Icons]: string } = {
@@ -30,4 +33,5 @@ export const ICONS_CODEPOINTS: { [key in Icons]: string } = {
   [Icons.Mail]: "61700",
   [Icons.Forward]: "61701",
   [Icons.Flash]: "61702",
+  [Icons.Calc]: "61703",
 };

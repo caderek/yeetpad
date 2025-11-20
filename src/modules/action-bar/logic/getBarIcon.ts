@@ -6,6 +6,10 @@ export function getBarIcon(query: string) {
     return "icon-flash"
   }
 
+  if (query.startsWith("=")) {
+    return "icon-calc"
+  }
+
   if (isEmail(query)) {
     console.log("email!")
     return "icon-mail"

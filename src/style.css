@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Icons";
+  font-family: "icons";
   src:
     url("/icons/icons.woff2") format("woff2"),
     url("/icons/icons.woff") format("woff");
@@ -8,8 +8,8 @@
 :root {
   color-scheme: dark;
 
-  --font-sans: system-ui;
-  --font-mono: monospace;
+  --font-sans: system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
 
   --font-xs: 0.75rem;
   --font-s: 0.875rem;

@@ -8,11 +8,14 @@ import { iconsStylesheet } from "../../reusable-components/common-stylesheets"
 import { initializeStylesheet } from "../../utils/initializeStylesheet"
 import { getBarIcon } from "./logic/getBarIcon"
 
+const stylesheet = initializeStylesheet(css)
+
 export class ActionBar
   extends HTMLElement
   implements Partial<WebComponentLifecycle>
 {
   #icon: HTMLElement | null = null
+  #input: HTMLInputElement | null = null
 
   constructor() {
     super()
@@ -23,28 +26,19 @@ export class ActionBar
 
   connectedCallback(): void {
     const shadow = this.attachShadow({ mode: "open" })
-    const stylesheet = initializeStylesheet(css)
     shadow.adoptedStyleSheets = [stylesheet, iconsStylesheet]
     shadow.innerHTML = html
     shadow.querySelector("input")?.focus()
     this.#registerHandlers()
 
     this.#icon = shadow.getElementById("bar-icon")
+    this.#input = shadow.querySelector("input")
   }
 
   handleInput(e: Event) {
     const target = e.currentTarget as HTMLInputElement
-    console.log(target.value)
 
     this.#updateIcon(target.value.trim())
-  }
-
-  #updateIcon(query: string) {
-    if (!this.#icon) {
-      return
-    }
-
-    this.#icon.className = getBarIcon(query)
   }
 
   handleSubmit(e: SubmitEvent) {
@@ -53,7 +47,16 @@ export class ActionBar
     const formData = new FormData(target)
 
     const query = ((formData.get("action-phrase") ?? "") as string).trim()
+    this.#input!.value = ""
     location.href = routeSearch(query)
+  }
+
+  #updateIcon(query: string) {
+    if (!this.#icon) {
+      return
+    }
+
+    this.#icon.className = getBarIcon(query)
   }
 
   #registerHandlers() {
