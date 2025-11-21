@@ -41,14 +41,24 @@ export class ActionBar
     this.#updateIcon(target.value.trim())
   }
 
-  handleSubmit(e: SubmitEvent) {
+  async handleSubmit(e: SubmitEvent) {
     e.preventDefault()
     const target = e.currentTarget as HTMLFormElement
     const formData = new FormData(target)
 
     const query = ((formData.get("action-phrase") ?? "") as string).trim()
-    this.#input!.value = ""
-    location.href = routeSearch(query)
+
+    const route = await routeSearch(query)
+
+    if (route.type === "redirect") {
+      this.#input!.value = ""
+      location.href = route.value
+      return
+    }
+
+    if (route.type === "inline") {
+      this.#input!.value = route.value
+    }
   }
 
   #updateIcon(query: string) {

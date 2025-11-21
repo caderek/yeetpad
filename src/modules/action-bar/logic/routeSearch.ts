@@ -1,139 +1,273 @@
+import { calculate } from "./calculate"
 import { getDirectUrl } from "./getDirectUrl"
-import { getSerachUrl } from "./getSearchUrl"
+import { getSearchUrl } from "./getSearchUrl"
 import { isEmail } from "./isEmail"
 
-export function routeSearch(query: string) {
+export type RouteType = "redirect" | "inline"
+export type Route = {
+  type: RouteType
+  value: string
+}
+
+export async function routeSearch(query: string): Promise<Route> {
   query = query.trim()
 
   if (isEmail(query)) {
-    return `mailto:${query}`
+    return { type: "redirect", value: `mailto:${query}` }
+  }
+
+  if (query.startsWith("=")) {
+    const expr = query.slice(1).trim()
+    const result = await calculate(expr)
+
+    if (result) {
+      return {
+        type: "inline",
+        value: `=${result}`,
+      }
+    }
+
+    return {
+      type: "redirect",
+      value: getSearchUrl.wolframalpha(expr),
+    }
   }
 
   const directUrl = getDirectUrl(query)
 
   if (directUrl) {
-    return directUrl
+    return {
+      type: "redirect",
+      value: directUrl,
+    }
   }
 
   if (query.endsWith("??")) {
-    return getSerachUrl.wikipedia(query.slice(0, -2))
+    return {
+      type: "redirect",
+      value: getSearchUrl.wikipedia(query.slice(0, -2)),
+    }
   }
 
   if (query.endsWith(" wiki")) {
-    return getSerachUrl.wikipedia(query.slice(0, -5))
+    return {
+      type: "redirect",
+      value: getSearchUrl.wikipedia(query.slice(0, -5)),
+    }
   }
 
   if (query.endsWith("?")) {
-    return getSerachUrl.google_ai(query.slice(0, -1))
+    return {
+      type: "redirect",
+      value: getSearchUrl.google_ai(query.slice(0, -1)),
+    }
   }
 
   if (query.endsWith(">>")) {
-    return getSerachUrl.boredflix(query.slice(0, -2))
+    return {
+      type: "redirect",
+      value: getSearchUrl.boredflix(query.slice(0, -2)),
+    }
   }
 
   if (query.endsWith(">")) {
-    return getSerachUrl.youtube(query.slice(0, -1))
+    return {
+      type: "redirect",
+      value: getSearchUrl.youtube(query.slice(0, -1)),
+    }
   }
 
   if (query.endsWith(" youtube")) {
-    return getSerachUrl.youtube(query.slice(0, -8))
+    return {
+      type: "redirect",
+      value: getSearchUrl.youtube(query.slice(0, -8)),
+    }
   }
 
   if (query.endsWith(" bing")) {
-    return getSerachUrl.bing(query.slice(0, -5))
+    return {
+      type: "redirect",
+      value: getSearchUrl.bing(query.slice(0, -5)),
+    }
   }
 
   if (query.endsWith(" spotify")) {
-    return getSerachUrl.spotify(query.slice(0, -8))
+    return {
+      type: "redirect",
+      value: getSearchUrl.spotify(query.slice(0, -8)),
+    }
   }
 
   if (query.endsWith(" goodreads")) {
-    return getSerachUrl.goodreads(query.slice(0, -10))
+    return {
+      type: "redirect",
+      value: getSearchUrl.goodreads(query.slice(0, -10)),
+    }
   }
 
   if (query.endsWith(" github")) {
-    return getSerachUrl.github(query.slice(0, -7))
+    return {
+      type: "redirect",
+      value: getSearchUrl.github(query.slice(0, -7)),
+    }
   }
 
   if (query.endsWith(" npm")) {
-    return getSerachUrl.npm(query.slice(0, -4))
+    return {
+      type: "redirect",
+      value: getSearchUrl.npm(query.slice(0, -4)),
+    }
   }
 
   if (query.endsWith("!")) {
-    return getSerachUrl.reddit(query.slice(0, -1))
+    return {
+      type: "redirect",
+      value: getSearchUrl.reddit(query.slice(0, -1)),
+    }
   }
 
   if (query.endsWith(" amazon")) {
-    return getSerachUrl.amazon(query.slice(0, -7))
+    return {
+      type: "redirect",
+      value: getSearchUrl.amazon(query.slice(0, -7)),
+    }
   }
 
   if (query.endsWith(" ebay")) {
-    return getSerachUrl.ebay(query.slice(0, -5))
+    return {
+      type: "redirect",
+      value: getSearchUrl.ebay(query.slice(0, -5)),
+    }
   }
 
   if (query.endsWith(" etsy")) {
-    return getSerachUrl.etsy(query.slice(0, -5))
+    return {
+      type: "redirect",
+      value: getSearchUrl.etsy(query.slice(0, -5)),
+    }
   }
 
   if (query.endsWith(" twitter")) {
-    return getSerachUrl.twitter(query.slice(0, -8))
+    return {
+      type: "redirect",
+      value: getSearchUrl.twitter(query.slice(0, -8)),
+    }
   }
 
   if (query.endsWith(" ecosia")) {
-    return getSerachUrl.ecosia(query.slice(0, -7))
+    return {
+      type: "redirect",
+      value: getSearchUrl.ecosia(query.slice(0, -7)),
+    }
   }
 
   if (query.endsWith(" yandex")) {
-    return getSerachUrl.yandex(query.slice(0, -7))
+    return {
+      type: "redirect",
+      value: getSearchUrl.yandex(query.slice(0, -7)),
+    }
   }
 
   if (query.endsWith(" searx")) {
-    return getSerachUrl.searx(query.slice(0, -6))
+    return {
+      type: "redirect",
+      value: getSearchUrl.searx(query.slice(0, -6)),
+    }
   }
 
   if (query.endsWith(" qwant")) {
-    return getSerachUrl.qwant(query.slice(0, -6))
+    return {
+      type: "redirect",
+      value: getSearchUrl.qwant(query.slice(0, -6)),
+    }
   }
 
   if (query.endsWith(" mojeek")) {
-    return getSerachUrl.mojeek(query.slice(0, -7))
+    return {
+      type: "redirect",
+      value: getSearchUrl.mojeek(query.slice(0, -7)),
+    }
   }
 
   if (query.endsWith(" kagi")) {
-    return getSerachUrl.kagi(query.slice(0, -5))
+    return {
+      type: "redirect",
+      value: getSearchUrl.kagi(query.slice(0, -5)),
+    }
   }
 
   if (query.endsWith(" marginalia")) {
-    return getSerachUrl.mariginalia(query.slice(0, -11))
+    return {
+      type: "redirect",
+      value: getSearchUrl.mariginalia(query.slice(0, -11)),
+    }
   }
 
   if (query.endsWith(" google")) {
-    return getSerachUrl.google(query.slice(0, -7))
+    return {
+      type: "redirect",
+      value: getSearchUrl.google(query.slice(0, -7)),
+    }
   }
 
   if (query.endsWith(" google web")) {
-    return getSerachUrl.google_web(query.slice(0, -11))
+    return {
+      type: "redirect",
+      value: getSearchUrl.google_web(query.slice(0, -11)),
+    }
   }
 
   if (query.endsWith(" google ai")) {
-    return getSerachUrl.google_ai(query.slice(0, -10))
+    return {
+      type: "redirect",
+      value: getSearchUrl.google_ai(query.slice(0, -10)),
+    }
   }
 
   if (query.endsWith(" gpt")) {
-    return getSerachUrl.chatgpt(query.slice(0, -4))
+    return {
+      type: "redirect",
+      value: getSearchUrl.chatgpt(query.slice(0, -4)),
+    }
   }
 
   if (query.endsWith(" duckduckgo")) {
-    return getSerachUrl.duckduckgo(query.slice(0, -11))
+    return {
+      type: "redirect",
+      value: getSearchUrl.duckduckgo(query.slice(0, -11)),
+    }
   }
 
   if (query.endsWith(" entertrained")) {
-    return getSerachUrl.entertrained(query.slice(0, -13))
+    return {
+      type: "redirect",
+      value: getSearchUrl.entertrained(query.slice(0, -13)),
+    }
+  }
+
+  if (query.endsWith(" wolfram")) {
+    return {
+      type: "redirect",
+      value: getSearchUrl.wolframalpha(query.slice(0, -8)),
+    }
   }
 
   if (query.endsWith("@")) {
-    return getSerachUrl.gmail(query.slice(0, -1))
+    return {
+      type: "redirect",
+      value: getSearchUrl.gmail(query.slice(0, -1)),
+    }
   }
 
-  return getSerachUrl.startpage(query)
+  if (query.endsWith(" so")) {
+    return {
+      type: "redirect",
+      value: getSearchUrl.stackoverflow(query.slice(0, -3)),
+    }
+  }
+
+  return {
+    type: "redirect",
+    value: getSearchUrl.startpage(query),
+  }
 }

@@ -29,6 +29,8 @@ import { getSearxSearchURL } from "./providers/searx"
 import { getYandexSearchURL } from "./providers/yandex"
 import { getEntertrainedSearchURL } from "./providers/entertrained"
 import { getBingSearchURL } from "./providers/bing"
+import { getWolframalphaSearchURL } from "./providers/wolframalpha"
+import { getStackoverflowSearchURL } from "./providers/stackoverflow"
 
 export type SearchProviderCategory =
   | "ai"
@@ -39,7 +41,7 @@ export type SearchProviderCategory =
   | "shopping"
   | "social"
 
-export const getSerachUrl = {
+export const getSearchUrl = {
   amazon: getAmazonSearchURL,
   bing: getBingSearchURL,
   boredflix: getBoredflixSearchURL,
@@ -64,9 +66,11 @@ export const getSerachUrl = {
   reddit: getRedditSearchURL,
   searx: getSearxSearchURL,
   spotify: getSpotifySearchURL,
+  stackoverflow: getStackoverflowSearchURL,
   startpage: getStartpageSearchURL,
   twitter: getTwitterSearchURL,
   wikipedia: getWikipediaSearchURL,
+  wolframalpha: getWolframalphaSearchURL,
   yandex: getYandexSearchURL,
   youtube: getYoutubeSearchURL,
 }
