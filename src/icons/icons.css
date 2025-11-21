@@ -28,6 +28,9 @@ i[class*=" icon-"]:before {
 .icon-flash:before {
   content: "\f106";
 }
-.icon-calc:before {
+.icon-close:before {
   content: "\f107";
+}
+.icon-calc:before {
+  content: "\f108";
 }

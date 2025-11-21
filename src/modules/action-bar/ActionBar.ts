@@ -16,12 +16,14 @@ export class ActionBar
 {
   #icon: HTMLElement | null = null
   #input: HTMLInputElement | null = null
+  #reset: HTMLButtonElement | null = null
 
   constructor() {
     super()
 
     this.handleInput = this.handleInput.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleReset = this.handleReset.bind(this)
   }
 
   connectedCallback(): void {
@@ -29,10 +31,12 @@ export class ActionBar
     shadow.adoptedStyleSheets = [stylesheet, iconsStylesheet]
     shadow.innerHTML = html
     shadow.querySelector("input")?.focus()
-    this.#registerHandlers()
 
     this.#icon = shadow.getElementById("bar-icon")
     this.#input = shadow.querySelector("input")
+    this.#reset = shadow.querySelector('button[type="reset"]')
+
+    this.#registerHandlers()
   }
 
   handleInput(e: Event) {
@@ -61,6 +65,11 @@ export class ActionBar
     }
   }
 
+  handleReset() {
+    this.#input!.value = ""
+    this.#updateIcon("")
+  }
+
   #updateIcon(query: string) {
     if (!this.#icon) {
       return
@@ -70,14 +79,22 @@ export class ActionBar
   }
 
   #registerHandlers() {
-    this.shadowRoot!.querySelector("input")!.addEventListener(
-      "input",
-      this.handleInput,
-    )
+    this.#input?.addEventListener("input", this.handleInput)
 
     this.shadowRoot!.querySelector("form")!.addEventListener(
       "submit",
       this.handleSubmit,
     )
+
+    this.shadowRoot!.querySelector('button[type="reset"]')?.addEventListener(
+      "click",
+      this.handleReset,
+    )
+
+    this.#input?.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        this.handleReset()
+      }
+    })
   }
 }
