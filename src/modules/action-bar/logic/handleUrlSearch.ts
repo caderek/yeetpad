@@ -1,6 +1,6 @@
 import { routeSearch } from "./routeSearch"
 
-export function handleUrlSearch() {
+export async function handleUrlSearch() {
   const search = new URLSearchParams(location.search)
   const query = (search.get("q") ?? "").trim()
 
@@ -8,7 +8,16 @@ export function handleUrlSearch() {
     return false
   }
 
-  location.href = routeSearch(query)
+  const route = await routeSearch(query)
+
+  if (route.type === "redirect") {
+    location.href = route.value
+    return true
+  }
+
+  if (route.type === "inline") {
+    // @todo Handle inline searches from omnibox
+  }
 
   return true
 }
