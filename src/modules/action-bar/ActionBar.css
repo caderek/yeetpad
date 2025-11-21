@@ -63,18 +63,28 @@ input::placeholder {
   padding: 0;
   cursor: pointer;
   transition-duration: 100ms;
+  opacity: 0.7;
 }
 
 .bar button:hover {
-  transform: scale(1.2);
+  opacity: 1;
+}
+
+.bar button:disabled:hover {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .bar button[type="submit"] i {
   color: var(--color-bg-primary);
 }
 
+.bar button[type="submit"]:disabled i {
+  color: var(--color-fg-min);
+}
+
 .bar button[type="reset"] i {
-  color: var(--color-fg-low);
+  color: var(--color-fg-min);
 }
 
 .bar button[type="reset"]:disabled {

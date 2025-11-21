@@ -17,6 +17,7 @@ export class ActionBar
   #icon: HTMLElement | null = null
   #input: HTMLInputElement | null = null
   #reset: HTMLButtonElement | null = null
+  #submit: HTMLButtonElement | null = null
 
   constructor() {
     super()
@@ -35,6 +36,7 @@ export class ActionBar
     this.#icon = shadow.getElementById("bar-icon")
     this.#input = shadow.querySelector("input")
     this.#reset = shadow.querySelector('button[type="reset"]')
+    this.#submit = shadow.querySelector('button[type="submit"]')
 
     this.#registerHandlers()
   }
@@ -51,6 +53,10 @@ export class ActionBar
     const formData = new FormData(target)
 
     const query = ((formData.get("action-phrase") ?? "") as string).trim()
+
+    if (!query) {
+      return
+    }
 
     const route = await routeSearch(query)
 
@@ -71,12 +77,13 @@ export class ActionBar
   }
 
   #updateIcon(query: string) {
-    if (!this.#icon || !this.#reset) {
+    if (!this.#icon || !this.#reset || !this.#submit) {
       return
     }
 
     this.#icon.className = getBarIcon(query)
     this.#reset.disabled = query === ""
+    this.#submit.disabled = query === ""
   }
 
   #registerHandlers() {
