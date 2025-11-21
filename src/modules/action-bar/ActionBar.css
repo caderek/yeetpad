@@ -77,6 +77,10 @@ input::placeholder {
   color: var(--color-fg-low);
 }
 
+.bar button[type="reset"]:disabled {
+  visibility: hidden;
+}
+
 @media (max-width: 59.99rem) {
   section {
     padding: 0;

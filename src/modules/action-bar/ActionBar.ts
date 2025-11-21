@@ -71,11 +71,12 @@ export class ActionBar
   }
 
   #updateIcon(query: string) {
-    if (!this.#icon) {
+    if (!this.#icon || !this.#reset) {
       return
     }
 
     this.#icon.className = getBarIcon(query)
+    this.#reset.disabled = query === ""
   }
 
   #registerHandlers() {
