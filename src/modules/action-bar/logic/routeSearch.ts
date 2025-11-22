@@ -252,10 +252,10 @@ export async function routeSearch(query: string): Promise<Route> {
     }
   }
 
-  if (query.endsWith("@")) {
+  if (query.endsWith("gmail")) {
     return {
       type: "redirect",
-      value: getSearchUrl.gmail(query.slice(0, -1)),
+      value: getSearchUrl.gmail(query.slice(0, -5)),
     }
   }
 
@@ -263,6 +263,13 @@ export async function routeSearch(query: string): Promise<Route> {
     return {
       type: "redirect",
       value: getSearchUrl.stackoverflow(query.slice(0, -3)),
+    }
+  }
+
+  if (query.endsWith(" lucida")) {
+    return {
+      type: "redirect",
+      value: getSearchUrl.lucida(query.slice(0, -7)),
     }
   }
 

@@ -31,6 +31,7 @@ import { getEntertrainedSearchURL } from "./providers/entertrained"
 import { getBingSearchURL } from "./providers/bing"
 import { getWolframalphaSearchURL } from "./providers/wolframalpha"
 import { getStackoverflowSearchURL } from "./providers/stackoverflow"
+import { getLucidaSearchURL } from "./providers/lucida"
 
 export type SearchProviderCategory =
   | "ai"
@@ -59,6 +60,7 @@ export const getSearchUrl = {
   google_web: getGoogleWebSearchURL,
   google_ai: getGoogleAISearchURL,
   kagi: getKagiSearchURL,
+  lucida: getLucidaSearchURL,
   mariginalia: getMarginaliaSearchURL,
   mojeek: getMojeekSearchURL,
   npm: getNpmSearchURL,
