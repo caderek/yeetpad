@@ -61,7 +61,7 @@ export class ActionBar
     const route = await routeSearch(query)
 
     if (route.type === "redirect") {
-      this.#input!.value = ""
+      this.handleReset()
       location.href = route.value
       return
     }
