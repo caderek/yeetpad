@@ -3,22 +3,37 @@ import { isEmail } from "./isEmail"
 
 export function getBarIcon(query: string) {
   if (query.startsWith("/")) {
-    return "icon-flash"
+    return {
+      img: null,
+      font: "icon-flash",
+    }
   }
 
   if (query.startsWith("=")) {
-    return "icon-calc"
+    return {
+      img: null,
+      font: "icon-calc",
+    }
   }
 
   if (isEmail(query)) {
-    console.log("email!")
-    return "icon-mail"
+    return {
+      img: null,
+      font: "icon-mail",
+    }
   }
 
-  if (getDirectUrl(query)) {
-    console.log("url!")
-    return "icon-web"
+  const directUrl = getDirectUrl(query)
+  if (directUrl) {
+    const domain = new URL(directUrl).hostname
+    return {
+      img: `https://icon.horse/icon/${domain}`,
+      font: "",
+    }
   }
 
-  return "icon-search"
+  return {
+    img: null,
+    font: "icon-search",
+  }
 }

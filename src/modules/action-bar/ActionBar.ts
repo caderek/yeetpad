@@ -81,7 +81,13 @@ export class ActionBar
       return
     }
 
-    this.#icon.className = getBarIcon(query)
+    const icon = getBarIcon(query)
+    this.#icon.className = icon.font
+    this.#icon.style.setProperty(
+      "--icon",
+      icon.img ? `url(${icon.img})` : "none",
+    )
+
     this.#reset.disabled = query === ""
     this.#submit.disabled = query === ""
   }
