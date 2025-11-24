@@ -21,17 +21,36 @@ async function openDB(name: string, version: number) {
       const newVersion = e.newVersion
 
       console.log(`Database upgrade needed`, oldVersion, newVersion)
-      // Create and migrate stores based on versions
       if (oldVersion < 1) {
-        const objectStore = db.createObjectStore("toDoList", {
-          keyPath: "taskTitle",
+        const browserHistoryStore = db.createObjectStore("browsing", {
+          keyPath: "host",
         })
-        objectStore.createIndex("hours", "hours", { unique: false })
-        objectStore.createIndex("minutes", "minutes", { unique: false })
-        objectStore.createIndex("day", "day", { unique: false })
-        objectStore.createIndex("month", "month", { unique: false })
-        objectStore.createIndex("year", "year", { unique: false })
-        objectStore.createIndex("notified", "notified", { unique: false })
+        browserHistoryStore.createIndex("by_last_visited", "last_visited", {
+          unique: false,
+        })
+        browserHistoryStore.createIndex("by_total_visits", "total_visits", {
+          unique: false,
+        })
+
+        const searchHistoryStore = db.createObjectStore("search", {
+          keyPath: "query",
+        })
+        searchHistoryStore.createIndex("by_last_used", "last_used", {
+          unique: false,
+        })
+        searchHistoryStore.createIndex("by_total_searches", "total_searches", {
+          unique: false,
+        })
+
+        const commandHistoryStore = db.createObjectStore("commands", {
+          keyPath: "command",
+        })
+        commandHistoryStore.createIndex("by_last_used", "last_used", {
+          unique: false,
+        })
+        commandHistoryStore.createIndex("by_total_uses", "total_uses", {
+          unique: false,
+        })
       }
     }
   }) as Promise<IDBDatabase | null>
@@ -39,7 +58,7 @@ async function openDB(name: string, version: number) {
 
 const CURRENT_VERSION = 1
 
-openDB("test", CURRENT_VERSION).then((db) => {
+openDB("history", CURRENT_VERSION).then((db) => {
   console.log(db)
 
   if (!db) {
