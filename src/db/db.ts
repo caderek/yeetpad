@@ -1,4 +1,4 @@
-import { Database } from "./Database"
+import { Database } from "../../lib/indexed-db/Database"
 import { migrations } from "./migrations/migrations"
 
 const DB_VERSION = 1
@@ -14,13 +14,13 @@ Database.connect("history", DB_VERSION, migrations).then(async (db) => {
     .run(async (stores) => {
       console.log({ stores })
 
-      await stores.search.add({
-        query: "hello",
-        total_searches: 1,
-        last_used: Date.now(),
-      })
+      // await stores.search.add({
+      //   query: "yo",
+      //   total_searches: 1,
+      //   last_used: Date.now(),
+      // })
 
-      return stores.search.get("helllo")
+      return stores.search.get("hello")
     })
 
   console.log({ result })
