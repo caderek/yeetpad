@@ -9,7 +9,7 @@ export async function loadFavicon(domain: string, size = 128) {
 
   return new Promise((resolve) => {
     img.onload = () => resolve(img)
-    img.onerror = () => resolve(null)
+    img.onerror = () => resolve(img)
   }) as Promise<HTMLImageElement | null>
 }
 
