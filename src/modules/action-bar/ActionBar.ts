@@ -94,12 +94,12 @@ export class ActionBar
     this.#updateIcon("")
   }
 
-  #updateIcon(query: string) {
+  async #updateIcon(query: string) {
     if (!this.#icon || !this.#reset || !this.#submit) {
       return
     }
 
-    const icon = getBarIcon(query)
+    const icon = await getBarIcon(query)
     this.#icon.className = icon.font
     this.#icon.style.setProperty(
       "--icon",
