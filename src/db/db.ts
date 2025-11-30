@@ -1,32 +1,51 @@
 import { Database } from "../../lib/indexed-db/Database"
+import type { Stores } from "./db-types"
 import { migrations } from "./migrations/migrations"
 
 const DB_VERSION = 1
 
-Database.connect("history", DB_VERSION, migrations).then(async (db) => {
-  if (!db) {
-    console.error("Can't connect to IndexedDB")
-    return
+async function initDB() {
+  const database = await Database.connect<Stores>(
+    "anonymous",
+    DB_VERSION,
+    migrations,
+  )
+
+  if (!database) {
+    throw new Error("Cannot connect to IndexedDB")
   }
 
-  const result = await db
-    .transaction(["search", "browsing"], "readwrite")
-    .run(async (stores) => {
-      console.log({ stores })
+  return database
+}
 
-      // await stores.search.add({
-      //   query: "yo",
-      //   total_searches: 1,
-      //   last_used: Date.now(),
-      // })
+export const database = initDB()
 
-      return stores.search.get("hello")
-    })
-
-  console.log({ result })
-
-  // const store = transaction.objectStore("search")
-  // console.log(store)
-
-  console.log("Database loaded sucessfully!")
-})
+// database.then(async (db) => {
+//   if (!db) {
+//     console.error("Can't connect to IndexedDB")
+//     return
+//   }
+//
+//   const result = await db.write(["search_history"]).run(async (stores) => {
+//     const entry = await stores.search_history.get(
+//       "2e3ff912-cf73-4229-a8a0-dbd91a7c0322",
+//     )
+//
+//     if (entry !== undefined) {
+//       await stores.search_history.put({
+//         ...entry,
+//         total: entry.total + 1,
+//         last: Date.now(),
+//       })
+//     } else {
+//       await stores.search_history.add({
+//         query: "2e3ff912-cf73-4229-a8a0-dbd91a7c0322",
+//         total: 1,
+//         last: Date.now(),
+//       })
+//     }
+//     return entry
+//   })
+//
+//   console.log(result)
+// })

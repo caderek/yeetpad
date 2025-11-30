@@ -5,5 +5,5 @@ export function getWolframalphaSearchURL(phrase: string) {
   const searchUrl = new URL("https://www.wolframalpha.com/input")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

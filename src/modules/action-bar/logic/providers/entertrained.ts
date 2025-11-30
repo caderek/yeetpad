@@ -6,5 +6,5 @@ export function getEntertrainedSearchURL(phrase: string) {
   const searchUrl = new URL("https://entertrained.app/books")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

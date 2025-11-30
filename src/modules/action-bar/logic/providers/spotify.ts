@@ -3,5 +3,5 @@ export function getSpotifySearchURL(phrase: string) {
     `https://open.spotify.com/search/${encodeURIComponent(phrase)}`,
   )
 
-  return searchUrl.toString()
+  return searchUrl
 }

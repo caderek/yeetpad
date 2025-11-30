@@ -1,17 +1,33 @@
+import type { BaseStores } from "./types"
 import { Transaction } from "./Transaction"
 
-export class Database {
+export class Database<T extends BaseStores> {
   #db: IDBDatabase
 
   constructor(db: IDBDatabase) {
     this.#db = db
   }
 
-  transaction(storeNames: string | string[], mode: IDBTransactionMode) {
-    return new Transaction(this.#db, storeNames, mode)
+  transaction<K extends readonly (keyof T)[]>(
+    storeNames: K,
+    mode: IDBTransactionMode,
+  ) {
+    return new Transaction<T, K>(this.#db, storeNames, mode)
   }
 
-  static async connect(
+  read<K extends readonly (keyof T)[]>(storeNames: K) {
+    return this.transaction(storeNames, "readonly")
+  }
+
+  write<K extends readonly (keyof T)[]>(storeNames: K) {
+    return this.transaction(storeNames, "readwrite")
+  }
+
+  get raw() {
+    return this.#db
+  }
+
+  static async connect<V extends BaseStores>(
     name: string,
     version: number,
     migrations: Map<number, (db: IDBDatabase) => void>,
@@ -52,6 +68,6 @@ export class Database {
       }
     })) as IDBDatabase | null
 
-    return rawDatabase ? new Database(rawDatabase) : null
+    return rawDatabase ? new Database<V>(rawDatabase) : null
   }
 }

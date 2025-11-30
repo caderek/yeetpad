@@ -5,5 +5,5 @@ export function getBoredflixSearchURL(phrase: string) {
   const searchUrl = new URL("https://boredflix.com/search")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

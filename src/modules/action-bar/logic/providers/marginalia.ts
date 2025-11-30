@@ -5,5 +5,5 @@ export function getMarginaliaSearchURL(phrase: string) {
   const searchUrl = new URL("https://marginalia-search.com/search")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

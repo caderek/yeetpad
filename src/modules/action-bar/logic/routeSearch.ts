@@ -3,14 +3,33 @@ import { getDirectUrl } from "./getDirectUrl"
 import { getSearchUrl } from "./getSearchUrl"
 import { isEmail } from "./isEmail"
 
-export type RouteType = "redirect" | "inline"
-export type Route = {
-  type: RouteType
-  value: string
-}
+export type Route =
+  | {
+      type: "direct"
+      value: string
+    }
+  | {
+      type: "redirect"
+      value: string | URL
+    }
+  | {
+      type: "inline"
+      value: string
+    }
+  | {
+      type: "command"
+      value: Promise<boolean> // temp for testing, it shoudl be a command result
+    }
 
 export async function routeSearch(query: string): Promise<Route> {
   query = query.trim()
+
+  if (query.startsWith("/")) {
+    return {
+      type: "command",
+      value: Promise.resolve(true),
+    }
+  }
 
   if (isEmail(query)) {
     return { type: "redirect", value: `mailto:${query}` }
@@ -37,7 +56,7 @@ export async function routeSearch(query: string): Promise<Route> {
 
   if (directUrl) {
     return {
-      type: "redirect",
+      type: "direct",
       value: directUrl,
     }
   }

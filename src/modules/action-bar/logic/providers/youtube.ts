@@ -5,5 +5,5 @@ export function getYoutubeSearchURL(phrase: string) {
   const searchUrl = new URL("https://youtube.com/results")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

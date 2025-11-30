@@ -5,5 +5,5 @@ export function getSearxSearchURL(phrase: string) {
   const searchUrl = new URL("https://metasearx.com/")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

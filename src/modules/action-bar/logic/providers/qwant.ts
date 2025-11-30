@@ -5,5 +5,5 @@ export function getQwantSearchURL(phrase: string) {
   const searchUrl = new URL("https://www.qwant.com/")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

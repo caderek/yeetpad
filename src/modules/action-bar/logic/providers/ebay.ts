@@ -5,5 +5,5 @@ export function getEbaySearchURL(phrase: string) {
   const searchUrl = new URL("https://www.ebay.com/sch/i.html")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

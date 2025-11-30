@@ -3,5 +3,5 @@ export function getGmailSearchURL(phrase: string) {
     `https://mail.google.com/#search/${encodeURIComponent(phrase)}`,
   )
 
-  return searchUrl.toString()
+  return searchUrl
 }

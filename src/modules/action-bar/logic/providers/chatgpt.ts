@@ -5,5 +5,5 @@ export function getCHatGPTSearchURL(phrase: string) {
   const searchUrl = new URL("https://chat.openai.com")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

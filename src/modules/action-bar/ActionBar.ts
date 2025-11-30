@@ -7,6 +7,9 @@ import { routeSearch } from "./logic/routeSearch"
 import { iconsStylesheet } from "../../reusable-components/common-stylesheets"
 import { initializeStylesheet } from "../../utils/initializeStylesheet"
 import { getBarIcon } from "./logic/getBarIcon"
+import { BrowsingHistory } from "../../db/BrowsingHistory"
+import { SearchHistory } from "../../db/SearechHistory"
+import { CommandHistory } from "../../db/CommandHistory"
 
 const stylesheet = initializeStylesheet(css)
 
@@ -60,9 +63,24 @@ export class ActionBar
 
     const route = await routeSearch(query)
 
-    if (route.type === "redirect") {
+    if (route.type === "direct") {
+      await BrowsingHistory.add(route.value)
       this.handleReset()
-      location.href = route.value
+      location.href = route.value.toString()
+      return
+    }
+
+    if (route.type === "redirect") {
+      await BrowsingHistory.add(route.value)
+      await SearchHistory.add(query)
+      this.handleReset()
+      location.href = route.value.toString()
+      return
+    }
+
+    if (route.type === "command") {
+      await CommandHistory.add(query.slice(1).trim())
+      this.handleReset()
       return
     }
 

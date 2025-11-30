@@ -5,5 +5,5 @@ export function getRedditSearchURL(phrase: string) {
   const searchUrl = new URL("https://www.reddit.com/search")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

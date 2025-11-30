@@ -8,5 +8,5 @@ export function getGithubSearchURL(phrase: string) {
   )
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

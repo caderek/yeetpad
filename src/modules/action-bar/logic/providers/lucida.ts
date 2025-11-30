@@ -7,5 +7,5 @@ export function getLucidaSearchURL(phrase: string) {
   const searchUrl = new URL("https://lucida.to/search")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

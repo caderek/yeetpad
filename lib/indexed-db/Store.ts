@@ -1,25 +1,44 @@
-export class Store<T> {
+export class Store<T, K extends keyof T> {
   #store: IDBObjectStore
 
   constructor(store: IDBObjectStore) {
     this.#store = store
   }
 
-  get(key: IDBValidKey): Promise<T | Error> {
-    return new Promise((resolve) => {
-      const request = this.#store.get(key)
+  get keypath() {
+    return this.#store.keyPath
+  }
 
-      request.onsuccess = () => resolve(request.result as T)
-      request.onerror = () => resolve(new Error(`Cannot get the key ${key}`))
+  get(key: T[K]): Promise<T | undefined> {
+    return new Promise((resolve, reject) => {
+      const request = this.#store.get(key as IDBValidKey)
+
+      request.onsuccess = () => resolve(request.result as T | undefined)
+      request.onerror = (e) => {
+        reject((e.target as IDBRequest).error)
+      }
     })
   }
 
-  add(value: any) {
-    return new Promise((resolve) => {
+  add(value: T): Promise<IDBValidKey> {
+    return new Promise((resolve, reject) => {
       const request = this.#store.add(value)
 
-      request.onsuccess = () => resolve(request.result as T)
-      request.onerror = () => resolve(new Error(`Cannot get add the value`))
+      request.onsuccess = () => resolve(request.result as IDBValidKey)
+      request.onerror = (e) => {
+        reject((e.target as IDBRequest).error)
+      }
+    })
+  }
+
+  put(value: T): Promise<IDBValidKey> {
+    return new Promise((resolve, reject) => {
+      const request = this.#store.put(value)
+
+      request.onsuccess = () => resolve(request.result as IDBValidKey)
+      request.onerror = (e) => {
+        reject((e.target as IDBRequest).error)
+      }
     })
   }
 }

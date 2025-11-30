@@ -1,20 +1,27 @@
-type SubpageVisitRecord = {
-  count: number
-  last_visited: number
-  total_visits: number
+type HistoryEntry = {
+  last: number
+  total: number
 }
 
-export type BrowserHistoryRedord = {
+type SubpageVisitEntry = HistoryEntry
+
+export type BrowsingHistoryEntry = HistoryEntry & {
   host: string
-  total_visits: number
-  last_visited: number
   subpages: {
-    [path: string]: SubpageVisitRecord
+    [path: string]: SubpageVisitEntry
   }
 }
 
-export type SearchHistoryRecord = {
+export type CommandHistoryEntry = HistoryEntry & {
+  command: string
+}
+
+export type SearchHistoryEntry = HistoryEntry & {
   query: string
-  total_searches: number
-  last_used: number
+}
+
+export type Stores = {
+  browsing_history: { key: "host"; val: BrowsingHistoryEntry }
+  command_history: { key: "command"; val: CommandHistoryEntry }
+  search_history: { key: "query"; val: SearchHistoryEntry }
 }

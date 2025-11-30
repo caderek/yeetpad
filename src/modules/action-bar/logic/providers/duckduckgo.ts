@@ -5,5 +5,5 @@ export function getDuckduckgoSearchURL(phrase: string) {
   const searchUrl = new URL("https://duckduckgo.com/")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

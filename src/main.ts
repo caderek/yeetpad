@@ -2,9 +2,9 @@ import "./style.css"
 import { handleUrlSearch } from "./modules/action-bar/logic/handleUrlSearch"
 import { ActionBar } from "./modules/action-bar/ActionBar"
 import { TextInput } from "./reusable-components/text-input/TextInput"
-// import "./db/db.ts"
+import "./db/db.ts"
 
-handleUrlSearch().then((redirected) => {
+handleUrlSearch().then(async (redirected) => {
   if (!redirected) {
     console.time("Defines")
     customElements.define("action-bar", ActionBar)

@@ -5,5 +5,5 @@ export function getGoodreadsSearchURL(phrase: string) {
   const searchUrl = new URL("https://www.goodreads.com/search")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

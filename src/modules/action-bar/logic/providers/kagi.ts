@@ -5,5 +5,5 @@ export function getKagiSearchURL(phrase: string) {
   const searchUrl = new URL("https://kagi.com/search")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

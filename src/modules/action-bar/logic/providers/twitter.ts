@@ -5,5 +5,5 @@ export function getTwitterSearchURL(phrase: string) {
   const searchUrl = new URL("https://x.com/search")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

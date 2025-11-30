@@ -11,7 +11,7 @@ export async function handleUrlSearch() {
   const route = await routeSearch(query)
 
   if (route.type === "redirect") {
-    location.href = route.value
+    location.href = route.value.toString()
     return true
   }
 

@@ -5,5 +5,5 @@ export function getStackoverflowSearchURL(phrase: string) {
   const searchUrl = new URL("https://stackoverflow.com/search")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }

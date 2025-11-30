@@ -16,7 +16,7 @@ function getGoogleSearchURL(phrase: string, umd?: UmdVal) {
   const searchUrl = new URL("https://google.com/search")
   searchUrl.search = searchParams.toString()
 
-  return searchUrl.toString()
+  return searchUrl
 }
 
 export function getGoogleDefaultSearchURL(phrase: string) {
