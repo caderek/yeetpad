@@ -1,3 +1,5 @@
+import { BrowsingHistory } from "../../../db/BrowsingHistory"
+import { SearchHistory } from "../../../db/SearechHistory"
 import { routeSearch } from "./routeSearch"
 
 export async function handleUrlSearch() {
@@ -11,6 +13,8 @@ export async function handleUrlSearch() {
   const route = await routeSearch(query)
 
   if (route.type === "redirect") {
+    await BrowsingHistory.add(route.value)
+    await SearchHistory.add(query)
     location.href = route.value.toString()
     return true
   }
