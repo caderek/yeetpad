@@ -1,13 +1,4 @@
-import type { Provider } from "./actionBarTypes"
 import { baseProviders } from "./providers/base"
-
-// export const baseProviders = {
-//   "amazon.com": {
-//     origin: "https://www.amazon.com",
-//     search: "/s?k=%s",
-//     affixes: ["amazon"],
-//   },
-// }
 
 const providers = baseProviders
 
