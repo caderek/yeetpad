@@ -21,7 +21,7 @@ export const baseProviders = {
   },
   "chatgpt.com": {
     origin: "https://chatgpt.com",
-    search: "?q=%s",
+    search: "?prompt=%s",
     affixes: ["chatgpt", "gpt"],
   },
   "duckduckgo.com": {
