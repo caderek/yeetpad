@@ -19,8 +19,8 @@ export const baseProviders = {
     search: "/search?q=%s",
     affixes: ["brave"],
   },
-  "chat.openai.com": {
-    origin: "https://chat.openai.com",
+  "chatgpt.com": {
+    origin: "https://chatgpt.com",
     search: "?q=%s",
     affixes: ["chatgpt", "gpt"],
   },
