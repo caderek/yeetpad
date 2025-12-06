@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-  <ShortName>Yeetpad Search</ShortName>
-  <LongName>Yeetpad.org Web Search</LongName>
-  <Description>Search the web with Yeetpad</Description>
+  <ShortName>Yeetpad</ShortName>
+  <LongName>Yeetpad Search</LongName>
+  <Description>Search with Yeetpad</Description>
+  <InputEncoding>UTF-8</InputEncoding>
   <Tags>yeetpad search engine, web, search, internet, general</Tags>
-  <Contact>contact@yeetpad.org</Contact>
-  <Url type="text/html"
-       template="http://yeetpad.org/?q={searchTerms}"/>
-  <Image height="64" width="64" type="image/png">http://yeetpad.org/icons/search_64p.png</Image>
-  <Image height="32" width="32" type="image/png">http://yeetpad.org/icons/search_32p.png</Image>
-  <Image height="16" width="16" type="image/png">http://yeetpad.org/icons/search_16p.png</Image>
+  <Url type="text/html" method="get" template="http://yeetpad.org/?q={searchTerms}"/>
+  <Image height="16" width="16" type="image/png">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADSSURBVHgBnVPbEYIwELzwix90ACX4jU3ECtQS7EA7oANKgE4oQTuACjzvNNEQ83RnmMncssvucAEgIKLENQZIhNAHJZIGtxdCjIrbWlxH3LJyopcqemYjBZ8rxR2thLXWFZ8ob8eT4cniHnLBVayvyVACl4GrSmPN6liKn79izep/qww5BqEqcYNIlTQDXxXIAQYW7IWp3B2mTTtPZXvjMyRW0RxtIl6At05AAwI7l4G6E6MxkrpKQcJvHIQF/OA1N/meqxSAjzMJ74q8+tS+u/IEfDFgrEyUw4IAAAAASUVORK5CYII=</Image>
   <Query role="example" searchTerms="cat" />
-</OpenSearchDescription>
+ </OpenSearchDescription> 
