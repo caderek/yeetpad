@@ -21,7 +21,7 @@ export const baseProviders = {
   },
   "chat.openai.com": {
     origin: "https://chat.openai.com",
-    search: "?=%s",
+    search: "?q=%s",
     affixes: ["chatgpt", "gpt"],
   },
   "duckduckgo.com": {
