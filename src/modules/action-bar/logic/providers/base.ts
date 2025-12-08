@@ -108,6 +108,7 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
   "grok.com": {
     name: "Grok",
     origin: "https://grok.com",
+    search: "/?q=%s",
     affixes: ["grok"],
   },
   "mail.google.com": {
