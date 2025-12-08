@@ -3,13 +3,20 @@ import css from "./ActionBar.css?raw"
 
 import type { WebComponentLifecycle } from "../../common-types/web-components"
 
-import { routeSearch } from "./logic/routeSearch"
 import { iconsStylesheet } from "../../reusable-components/common-stylesheets"
 import { initializeStylesheet } from "../../utils/initializeStylesheet"
-import { getBarIcon } from "./logic/getBarIcon"
 import { BrowsingHistory } from "../../db/BrowsingHistory"
 import { SearchHistory } from "../../db/SearechHistory"
 import { CommandHistory } from "../../db/CommandHistory"
+import { EmptyProvider } from "./logic/providers/EmptyProvider"
+import type { CalcProvider } from "./logic/providers/CalcProvider"
+import type { CommandProvider } from "./logic/providers/CommandProvider"
+import type { DirectProvider } from "./logic/providers/DirectProvider"
+import type { MailProvider } from "./logic/providers/MailProvider"
+import type { SearchProvider } from "./logic/providers/SearchProvider"
+import { getProvider } from "./logic/getProvider"
+import { executeQuery } from "./logic/executeQuery"
+import type { IconData } from "./logic/providers/interfaces"
 
 const stylesheet = initializeStylesheet(css)
 
@@ -21,6 +28,13 @@ export class ActionBar
   #input: HTMLInputElement | null = null
   #reset: HTMLButtonElement | null = null
   #submit: HTMLButtonElement | null = null
+  #provider:
+    | EmptyProvider
+    | CalcProvider
+    | CommandProvider
+    | DirectProvider
+    | MailProvider
+    | SearchProvider = new EmptyProvider()
 
   constructor() {
     super()
@@ -44,10 +58,11 @@ export class ActionBar
     this.#registerHandlers()
   }
 
-  handleInput(e: Event) {
+  async handleInput(e: Event) {
     const target = e.currentTarget as HTMLInputElement
+    const provider = await getProvider(target.value)
 
-    this.#updateIcon(target.value.trim())
+    this.#updateIcon(await provider.icon)
   }
 
   async handleSubmit(e: SubmitEvent) {
@@ -55,59 +70,62 @@ export class ActionBar
     const target = e.currentTarget as HTMLFormElement
     const formData = new FormData(target)
 
-    const query = ((formData.get("action-phrase") ?? "") as string).trim()
+    const query = (formData.get("action-phrase") ?? "") as string
+    this.#provider = await getProvider(query)
 
-    if (!query) {
+    if (this.#provider instanceof EmptyProvider) {
       return
     }
 
-    const route = await routeSearch(query)
+    const result = await executeQuery(this.#provider)
 
-    if (route.type === "direct") {
-      await BrowsingHistory.add(route.value)
-      this.handleReset()
-      location.href = route.value.toString()
-      return
-    }
+    // if (result.type === "direct") {
+    //   await BrowsingHistory.add(result.value)
+    //   this.handleReset()
+    //   location.href = result.value.toString()
+    //   return
+    // }
 
-    if (route.type === "redirect") {
-      await BrowsingHistory.add(route.value)
+    if (result.type === "redirect") {
+      await BrowsingHistory.add(result.value)
       await SearchHistory.add(query)
       this.handleReset()
-      location.href = route.value.toString()
+      location.href = result.value.toString()
       return
     }
 
-    if (route.type === "command") {
+    if (result.type === "command") {
       await CommandHistory.add(query.slice(1).trim())
       this.handleReset()
       return
     }
 
-    if (route.type === "inline") {
-      this.#input!.value = route.value
+    if (result.type === "inline") {
+      this.#input!.value = result.value
     }
   }
 
   handleReset() {
     this.#input!.value = ""
-    this.#updateIcon("")
+    this.#updateIcon({
+      img: null,
+      font: "icon-search",
+    })
   }
 
-  async #updateIcon(query: string) {
+  async #updateIcon(icon: IconData) {
     if (!this.#icon || !this.#reset || !this.#submit) {
       return
     }
 
-    const icon = await getBarIcon(query)
-    this.#icon.className = icon.font
+    this.#icon.className = icon.font ?? ""
     this.#icon.style.setProperty(
       "--icon",
       icon.img ? `url(${icon.img})` : "none",
     )
 
-    this.#reset.disabled = query === ""
-    this.#submit.disabled = query === ""
+    this.#reset.disabled = this.#provider === null
+    this.#submit.disabled = this.#provider === null
   }
 
   #registerHandlers() {

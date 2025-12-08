@@ -7,6 +7,7 @@ const TOP_LEVEL_DOMAINS = new Set(
 export function getDirectUrl(query: string) {
   try {
     const hasProtocol = /^https?:\/\//.test(query)
+
     const url = new URL(`${hasProtocol ? "" : "https://"}${query}`)
 
     const chunks = url.hostname.split(".")
@@ -20,7 +21,7 @@ export function getDirectUrl(query: string) {
       (chunks.length > 1 && TOP_LEVEL_DOMAINS.has(tld)) ||
       tld === "localhost"
     ) {
-      return url.toString()
+      return url
     }
   } catch {}
 

@@ -57,7 +57,7 @@ export const baseProviders = {
   "github.com": {
     origin: "https://github.com",
     search: "/search?q=%s",
-    affixes: ["github gh"],
+    affixes: ["github", "gh"],
   },
   "mail.google.com": {
     origin: "https://mail.google.com",
@@ -72,7 +72,7 @@ export const baseProviders = {
   "google.com": {
     origin: "https://www.google.com",
     search: "/search?q=%s",
-    affixes: ["google", "g"],
+    affixes: ["google"],
   },
   "google.com:ai": {
     origin: "https://www.google.com/search?q=&udm=50",

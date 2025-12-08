@@ -1,25 +1,28 @@
 import { BrowsingHistory } from "../../../db/BrowsingHistory"
 import { SearchHistory } from "../../../db/SearechHistory"
-import { routeSearch } from "./routeSearch"
+import { executeQuery } from "./executeQuery"
+import { getProvider } from "./getProvider"
+import { EmptyProvider } from "./providers/EmptyProvider"
 
 export async function handleUrlSearch() {
   const search = new URLSearchParams(location.search)
-  const query = (search.get("q") ?? "").trim()
+  const query = search.get("q") ?? ""
+  const provider = await getProvider(query)
 
-  if (!query) {
+  if (provider instanceof EmptyProvider) {
     return false
   }
 
-  const route = await routeSearch(query)
+  const result = await executeQuery(provider)
 
-  if (route.type === "redirect") {
-    await BrowsingHistory.add(route.value)
+  if (result.type === "redirect") {
+    await BrowsingHistory.add(result.value)
     await SearchHistory.add(query)
-    location.href = route.value.toString()
+    location.href = result.value.toString()
     return true
   }
 
-  if (route.type === "inline") {
+  if (result.type === "inline") {
     // @todo Handle inline searches from omnibox
   }
 
