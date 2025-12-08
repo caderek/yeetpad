@@ -15,7 +15,7 @@ export class SearchProvider implements IconSource {
   #search: string
   #domain?: string
 
-  constructor(phrase: string, origin: string, search: string, name: string) {
+  constructor(phrase: string, origin: string, search: string, name?: string) {
     this.#phrase = phrase
     this.#origin = origin
     this.#search = search
