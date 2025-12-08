@@ -54,13 +54,13 @@ export async function getProvider(query: string) {
     return new MailProvider(q)
   }
 
-  const directUrl = getDirectUrl(query)
+  const directUrl = getDirectUrl(q)
 
   if (directUrl) {
     return new DirectProvider(directUrl)
   }
 
-  const chunks = query.split(/\s+/)
+  const chunks = q.split(/\s+/)
 
   if (chunks.length === 1) {
     const match = affixToProvider[chunks[0]]
