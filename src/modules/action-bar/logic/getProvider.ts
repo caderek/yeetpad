@@ -20,9 +20,9 @@ export async function getProvider(query: string) {
     const defaultSearchEngine = baseProviders["startpage.com"]
 
     return new SearchProvider(
-      q.slice(0, -1),
+      q.slice(0, -1).trim(),
       defaultSearchEngine.origin,
-      defaultSearchEngine.search,
+      defaultSearchEngine.search!,
       "",
     )
   }
@@ -37,6 +37,17 @@ export async function getProvider(query: string) {
 
   if (q.endsWith("=")) {
     return new CalcProvider(q.slice(0, -1).trim())
+  }
+
+  if (q.endsWith("??")) {
+    const defaultAiChatbox = baseProviders["perplexity.ai"]
+
+    return new SearchProvider(
+      q.slice(0, -2).trim(),
+      defaultAiChatbox.origin,
+      defaultAiChatbox.search!,
+      "perplexity.ai",
+    )
   }
 
   if (isEmail(q)) {
@@ -95,7 +106,7 @@ export async function getProvider(query: string) {
   return new SearchProvider(
     q,
     defaultSearchEngine.origin,
-    defaultSearchEngine.search,
+    defaultSearchEngine.search!,
     "",
   )
 }

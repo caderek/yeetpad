@@ -1,3 +1,10 @@
+export type WebsiteInfo = {
+  name: string
+  origin: string
+  search?: string
+  affixes: string[]
+}
+
 export type IconData =
   | {
       img: string

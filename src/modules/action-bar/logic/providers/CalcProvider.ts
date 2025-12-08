@@ -22,7 +22,7 @@ export class CalcProvider implements IconSource {
     return new SearchProvider(
       this.#expression,
       websiteInfo.origin,
-      websiteInfo.search,
+      websiteInfo.search!,
     )
   }
 
