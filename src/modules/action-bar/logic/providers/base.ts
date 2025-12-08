@@ -37,7 +37,7 @@ export const baseProviders = {
   "ecosia.org": {
     origin: "https://www.ecosia.org",
     search: "/search?q=%s",
-    affixes: ["esosia"],
+    affixes: ["ecosia"],
   },
   "entertrained.app": {
     origin: "https://entertrained.app",
