@@ -31,6 +31,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     search: "/search?q=%s",
     affixes: ["brave"],
   },
+  "calendar.proton.me": {
+    name: "Proton Calendar",
+    origin: "https://calendar.proton.me",
+    search: "/search#keyword=%s",
+    affixes: ["protoncalendar", "protcal"],
+  },
   "chatgpt.com": {
     name: "Chat GPT",
     origin: "https://chatgpt.com",
@@ -52,6 +58,29 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     name: "Copilot",
     origin: "https://copilot.microsoft.com/",
     affixes: ["copilot"],
+  },
+  "deepseek.com": {
+    name: "DeepSeek",
+    origin: "https://chat.deepseek.com",
+    affixes: ["deepseek"],
+  },
+  "drive.google.com": {
+    name: "Google Drive",
+    origin: "https://drive.google.com",
+    search: "/drive/search?q=%s",
+    affixes: ["googledrive", "gdrive"],
+  },
+  "drive.proton.me": {
+    name: "Proton Drive",
+    origin: "https://drive.proton.me",
+    search: "/search#q=%s",
+    affixes: ["protondrive", "protdrive"],
+  },
+  "dropbox.com": {
+    name: "Dropbox",
+    origin: "https://www.dropbox.com",
+    search: "/search/personal?query=%s",
+    affixes: ["dropbox"],
   },
   "duckduckgo.com": {
     name: "DuckDuckGo",
@@ -75,6 +104,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     origin: "https://www.ecosia.org",
     search: "/search?q=%s",
     affixes: ["ecosia"],
+  },
+  "ecosia.org:ai": {
+    name: "Ecosia AI",
+    origin: "https://www.ecosia.org/ai-search",
+    search: "https://www.ecosia.org/ai-search?q=%s",
+    affixes: ["ecosiaai", "ecoai"],
   },
   "entertrained.app": {
     name: "Entertrained",
@@ -141,11 +176,28 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     search: "https://www.google.com/search?q=%s&udm=14",
     affixes: ["googleweb", "gweb"],
   },
+  "instagram.com": {
+    name: "Instagram",
+    origin: "https://www.instagram.com",
+    affixes: ["instagram", "insta"],
+  },
   "kagi.com": {
     name: "Kagi",
     origin: "https://kagi.com",
     search: "/search?q=%s",
     affixes: ["kagi"],
+  },
+  "lumo.proton.me": {
+    name: "Lumo",
+    origin: "https://lumo.proton.me",
+    search: "/?q=%s",
+    affixes: ["lumo"],
+  },
+  "mail.proton.me": {
+    name: "Proton Mail",
+    origin: "https://mail.proton.me",
+    search: "/almost-all-mail#keyword=%s",
+    affixes: ["proton", "protonmail", "protmail"],
   },
   "marginalia-search.com": {
     name: "Marginalia Search",
@@ -159,6 +211,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     search: "/search?q=%s",
     affixes: ["mojeek"],
   },
+  "music.youtube.com": {
+    name: "YouTube Music",
+    origin: "https://music.youtube.com",
+    search: "/search?q=%s",
+    affixes: ["ytm", "youtubemusic"],
+  },
   "npmjs.com": {
     name: "NPM",
     origin: "https://www.npmjs.com",
@@ -170,6 +228,18 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     origin: "https://www.perplexity.ai",
     search: "/?q=%s",
     affixes: ["perplexity"],
+  },
+  "pinterest.com": {
+    name: "Pinterest",
+    origin: "https://pl.pinterest.com",
+    search: "/search/pins/?q=%s",
+    affixes: ["pinterest"],
+  },
+  "quora.com": {
+    name: "Quora",
+    origin: "https://www.quora.com",
+    search: "/search?q=%s",
+    affixes: ["quora"],
   },
   "qwant.com": {
     name: "Qwant",
@@ -206,6 +276,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     origin: "https://www.startpage.com",
     search: "/sp/search?q=%s",
     affixes: ["startpage"],
+  },
+  "tiktok.com": {
+    name: "TikTok",
+    origin: "https://www.tiktok.com",
+    search: "/search?q=%s",
+    affixes: ["tiktok"],
   },
   "x.com": {
     name: "X",

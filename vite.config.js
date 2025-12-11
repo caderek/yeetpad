@@ -4,5 +4,6 @@ export default defineConfig({
   server: {
     allowedHosts: [".trycloudflare.com"],
     host: true,
+    port: 1234,
   },
 })
