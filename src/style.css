@@ -34,7 +34,7 @@
   --color-bg-high: hsl(223deg, 11%, 10%);
   --color-bg-max: hsl(223deg, 11%, 9%);
   --color-fg-primary: var(--color-bg);
-  --color-bg-primary: oklch(54.41% 0.214 19.06);
+  --color-bg-primary: #ff9500;
   --color-bg-secondary: #00adb5;
 }
 
