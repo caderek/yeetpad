@@ -17,7 +17,7 @@ header {
   --icon-size: var(--font-xl);
   --icon-padding: var(--space-m);
   background: var(--color-bg-high);
-  border: solid 2px var(--color-bg-min);
+  border: solid 1px var(--color-bg-min);
   border-radius: var(--space-s);
   box-shadow: inset 0 1rem 1.25rem var(--color-bg-max);
   display: grid;
@@ -26,7 +26,7 @@ header {
 }
 
 .bar:has(input:focus) {
-  border-bottom: solid 2px var(--color-bg-primary);
+  border-bottom: solid 1px var(--color-bg-primary);
 }
 
 .bar i {

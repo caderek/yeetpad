@@ -23,16 +23,19 @@
   --space-l: 32px;
   --space-xl: 64px;
 
-  --color-fg-min: hsl(223deg, 11%, 50%);
-  --color-fg-low: hsl(223deg, 11%, 60%);
-  --color-fg-mid: hsl(223deg, 11%, 70%);
-  --color-fg-high: hsl(223deg, 11%, 80%);
-  --color-fg-max: hsl(223deg, 11%, 90%);
-  --color-bg-min: hsl(223deg, 11%, 16%);
-  --color-bg-low: hsl(223deg, 11%, 14%);
-  --color-bg-mid: hsl(223deg, 11%, 12%);
-  --color-bg-high: hsl(223deg, 11%, 10%);
-  --color-bg-max: hsl(223deg, 11%, 9%);
+  --hue: 222deg;
+  --saturation: 12%;
+
+  --color-fg-min: hsl(var(--hue), var(--saturation), 50%);
+  --color-fg-low: hsl(var(--hue), var(--saturation), 60%);
+  --color-fg-mid: hsl(var(--hue), var(--saturation), 70%);
+  --color-fg-high: hsl(var(--hue), var(--saturation), 80%);
+  --color-fg-max: hsl(var(--hue), var(--saturation), 90%);
+  --color-bg-min: hsl(var(--hue), var(--saturation), 22%);
+  --color-bg-low: hsl(var(--hue), var(--saturation), 20%);
+  --color-bg-mid: hsl(var(--hue), var(--saturation), 18%);
+  --color-bg-high: hsl(var(--hue), var(--saturation), 16%);
+  --color-bg-max: hsl(var(--hue), var(--saturation), 14%);
   --color-fg-primary: var(--color-bg);
   --color-bg-primary: #ff9500;
   --color-bg-secondary: #00adb5;
