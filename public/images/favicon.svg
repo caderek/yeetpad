@@ -1,7 +1,7 @@
 <svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_64_42)">
-<path d="M123 128H90.9998L5.6665 0H37.6665L123 128Z" fill="white"/>
-<path d="M100.333 82L72.3332 40V12H100.333V82Z" fill="white"/>
+<path d="M123 128H90.9998L5.6665 0H37.6665L123 128Z" fill="#E2E4E8"/>
+<path d="M100.333 82L72.3332 40V12H100.333V82Z" fill="#E2E4E8"/>
 <circle cx="21.3333" cy="111.667" r="16.3333" fill="#FF9500"/>
 </g>
 <defs>
