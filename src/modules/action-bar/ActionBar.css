@@ -14,7 +14,7 @@ header {
 }
 
 header img {
-  max-width: min(80%, 16rem);
+  max-width: min(50%, 16rem);
 }
 
 header h1 {
@@ -151,6 +151,10 @@ input::placeholder {
 
   .bar:has(button[type="reset"]:disabled) {
     grid-template-columns: 2.5rem 1fr 0 2.5rem;
+  }
+
+  header {
+    padding: var(--space-s);
   }
 
   input {
