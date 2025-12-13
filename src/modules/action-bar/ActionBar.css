@@ -14,7 +14,7 @@ header {
 }
 
 header img {
-  max-width: min(80%, 20rem);
+  max-width: min(80%, 16rem);
 }
 
 header h1 {
