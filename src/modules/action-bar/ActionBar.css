@@ -149,6 +149,10 @@ input::placeholder {
     grid-template-columns: 2.5rem 1fr 2.5rem 2.5rem;
   }
 
+  .bar:has(button[type="reset"]:disabled) {
+    grid-template-columns: 2.5rem 1fr 0 2.5rem;
+  }
+
   input {
     font-size: var(--font-m);
   }
