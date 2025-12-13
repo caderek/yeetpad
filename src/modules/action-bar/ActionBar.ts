@@ -113,6 +113,7 @@ export class ActionBar
       img: null,
       font: "icon-search",
     })
+    this.#input!.focus()
   }
 
   async #updateIcon(icon: IconData) {
