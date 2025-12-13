@@ -13,6 +13,14 @@ header {
   padding: var(--space-m);
 }
 
+header img {
+  max-width: min(80%, 20rem);
+}
+
+header h1 {
+  margin: var(--space-m);
+}
+
 .bar {
   --icon-size: var(--font-xl);
   --icon-padding: var(--space-m);
@@ -26,7 +34,7 @@ header {
 }
 
 .bar:has(input:focus) {
-  border-bottom: solid 1px var(--color-bg-primary);
+  border-bottom: solid 2px var(--color-bg-primary);
 }
 
 .bar i {
@@ -70,6 +78,8 @@ input {
   font-size: var(--font-l);
   font-family: var(--font-mono);
   background: transparent;
+  color: var(--color-fg-mid);
+  caret-color: var(--color-bg-primary);
   width: 100%;
 }
 

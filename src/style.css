@@ -41,6 +41,25 @@
   --color-bg-secondary: #00adb5;
 }
 
+.light {
+  --hue: 222deg;
+  --saturation: 15%;
+
+  --color-bg-min: hsl(var(--hue), var(--saturation), 85%);
+  --color-bg-low: hsl(var(--hue), var(--saturation), 91%);
+  --color-bg-mid: hsl(var(--hue), var(--saturation), 94%);
+  --color-bg-high: hsl(var(--hue), var(--saturation), 97%);
+  --color-bg-max: hsl(var(--hue), var(--saturation), 100%);
+  --color-fg-min: hsl(var(--hue), var(--saturation), 50%);
+  --color-fg-low: hsl(var(--hue), var(--saturation), 40%);
+  --color-fg-mid: hsl(var(--hue), var(--saturation), 30%);
+  --color-fg-high: hsl(var(--hue), var(--saturation), 20%);
+  --color-fg-max: hsl(var(--hue), var(--saturation), 10%);
+  --color-fg-primary: var(--color-bg);
+  --color-bg-primary: #006aff;
+  --color-bg-secondary: #00adb5;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

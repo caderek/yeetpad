@@ -19,6 +19,7 @@ import { executeQuery } from "./logic/executeQuery"
 import type { IconData } from "./logic/providers/interfaces"
 
 const stylesheet = initializeStylesheet(css)
+const emptyProvider = new EmptyProvider()
 
 export class ActionBar
   extends HTMLElement
@@ -34,7 +35,7 @@ export class ActionBar
     | CommandProvider
     | DirectProvider
     | MailProvider
-    | SearchProvider = new EmptyProvider()
+    | SearchProvider = emptyProvider
 
   constructor() {
     super()
@@ -60,9 +61,9 @@ export class ActionBar
 
   async handleInput(e: Event) {
     const target = e.currentTarget as HTMLInputElement
-    const provider = await getProvider(target.value)
+    this.#provider = await getProvider(target.value)
 
-    this.#updateIcon(await provider.icon)
+    this.#updateIcon(await this.#provider.icon)
   }
 
   async handleSubmit(e: SubmitEvent) {
@@ -106,6 +107,7 @@ export class ActionBar
   }
 
   handleReset() {
+    this.#provider = emptyProvider
     this.#input!.value = ""
     this.#updateIcon({
       img: null,
@@ -124,8 +126,10 @@ export class ActionBar
       icon.img ? `url(${icon.img})` : "none",
     )
 
-    this.#reset.disabled = this.#provider === null
-    this.#submit.disabled = this.#provider === null
+    console.log(this.#provider)
+
+    this.#reset.disabled = this.#provider instanceof EmptyProvider
+    this.#submit.disabled = this.#provider instanceof EmptyProvider
   }
 
   #registerHandlers() {
