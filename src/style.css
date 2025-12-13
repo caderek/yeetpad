@@ -24,7 +24,7 @@
   --space-xl: 64px;
 
   --hue: 222deg;
-  --saturation: 12%;
+  --saturation: 15%;
 
   --color-fg-min: hsl(var(--hue), var(--saturation), 50%);
   --color-fg-low: hsl(var(--hue), var(--saturation), 60%);
