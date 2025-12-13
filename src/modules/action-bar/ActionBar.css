@@ -4,7 +4,7 @@
 
 section {
   text-align: center;
-  padding: var(--space-m);
+  padding: 0 var(--space-m);
   max-width: 60rem;
   margin: auto;
 }
