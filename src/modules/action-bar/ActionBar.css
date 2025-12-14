@@ -34,7 +34,7 @@ header h1 {
 }
 
 .bar:has(input:focus) {
-  border-bottom: solid 2px var(--color-bg-primary);
+  border-bottom: solid 2px var(--color-fg-primary);
 }
 
 .bar i {
@@ -79,12 +79,16 @@ input {
   font-family: var(--font-mono);
   background: transparent;
   color: var(--color-fg-mid);
-  caret-color: var(--color-bg-primary);
+  caret-color: var(--color-fg-primary);
   width: 100%;
 }
 
 input.special {
-  color: var(--color-bg-primary);
+  color: var(--color-fg-primary);
+}
+
+input.command {
+  color: var(--color-fg-secondary);
 }
 
 input:focus {
@@ -113,7 +117,7 @@ input::placeholder {
 }
 
 .bar button[type="submit"] i {
-  color: var(--color-bg-primary);
+  color: var(--color-fg-primary);
 }
 
 .bar button[type="submit"]:disabled i {

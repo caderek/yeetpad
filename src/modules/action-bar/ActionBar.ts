@@ -10,7 +10,7 @@ import { SearchHistory } from "../../db/SearechHistory"
 import { CommandHistory } from "../../db/CommandHistory"
 import { EmptyProvider } from "./logic/providers/EmptyProvider"
 import type { CalcProvider } from "./logic/providers/CalcProvider"
-import type { CommandProvider } from "./logic/providers/CommandProvider"
+import { CommandProvider } from "./logic/providers/CommandProvider"
 import type { DirectProvider } from "./logic/providers/DirectProvider"
 import type { MailProvider } from "./logic/providers/MailProvider"
 import type { SearchProvider } from "./logic/providers/SearchProvider"
@@ -64,7 +64,11 @@ export class ActionBar
     const target = e.currentTarget as HTMLInputElement
     this.#provider = await getProvider(target.value)
     target.className =
-      this.#provider instanceof DefaultProvider ? "" : "special"
+      this.#provider instanceof CommandProvider
+        ? "command"
+        : this.#provider instanceof DefaultProvider
+          ? ""
+          : "special"
 
     this.#updateIcon(await this.#provider.icon)
   }

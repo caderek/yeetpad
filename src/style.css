@@ -37,8 +37,8 @@
   --color-bg-high: hsl(var(--hue), var(--saturation), 16%);
   --color-bg-max: hsl(var(--hue), var(--saturation), 14%);
   --color-fg-primary: var(--color-bg);
-  --color-bg-primary: #ff9500;
-  --color-bg-secondary: #00adb5;
+  --color-fg-primary: #ff9500;
+  --color-fg-secondary: #4d97ff;
 }
 
 .light {
@@ -56,8 +56,8 @@
   --color-fg-high: hsl(var(--hue), var(--saturation), 20%);
   --color-fg-max: hsl(var(--hue), var(--saturation), 10%);
   --color-fg-primary: var(--color-bg);
-  --color-bg-primary: #006aff;
-  --color-bg-secondary: #00adb5;
+  --color-fg-primary: #006aff;
+  --color-fg-secondary: #00adb5;
 }
 
 * {
