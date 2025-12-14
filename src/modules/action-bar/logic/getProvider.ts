@@ -16,7 +16,7 @@ export async function getProvider(query: string) {
     return new EmptyProvider()
   }
 
-  if (q.endsWith(";") || q.endsWith(".")) {
+  if (query.endsWith(" ")) {
     const defaultSearchEngine = baseProviders["startpage.com"]
 
     return new SearchProvider(
@@ -40,13 +40,13 @@ export async function getProvider(query: string) {
   }
 
   if (q.endsWith("?")) {
-    const defaultAiChatbox = baseProviders["lumo.proton.me"]
+    const defaultAiChatbox = baseProviders["perplexity.ai"]
 
     return new SearchProvider(
       q.slice(0, -1).trim(),
       defaultAiChatbox.origin,
       defaultAiChatbox.search!,
-      "lumo.proton.me",
+      "perplexity.ai",
     )
   }
 

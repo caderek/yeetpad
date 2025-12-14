@@ -7,6 +7,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     search: "/s?k=%s",
     affixes: ["amazon"],
   },
+  "audible.com": {
+    name: "Audible",
+    origin: "https://www.audible.com",
+    search: "/search?keywords=%s",
+    affixes: ["audible"],
+  },
   "baidu.com": {
     name: "Baidu",
     origin: "https://www.baidu.com",
@@ -64,6 +70,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     origin: "https://chat.deepseek.com",
     affixes: ["deepseek"],
   },
+  "deezer.com": {
+    name: "Deezer",
+    origin: "https://www.deezer.com",
+    search: "/search/%s",
+    affixes: ["deezer"],
+  },
   "drive.google.com": {
     name: "Google Drive",
     origin: "https://drive.google.com",
@@ -117,6 +129,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     search: "/books?search=%s",
     affixes: ["entertrained"],
   },
+  "epicgames.com": {
+    name: "Epic Games",
+    origin: "https://store.epicgames.com",
+    search: "/browse?q=fortnite",
+    affixes: ["epic", "epicgames", "epicstore"],
+  },
   "etsy.com": {
     name: "Etsy",
     origin: "https://www.etsy.com",
@@ -152,6 +170,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     search: "/#search/%s",
     affixes: ["gmail"],
   },
+  "gog.com": {
+    name: "GOG",
+    origin: "https://www.gog.com",
+    search: "/games?query=%s",
+    affixes: ["gog"],
+  },
   "goodreads.com": {
     name: "",
     origin: "https://www.goodreads.com",
@@ -180,6 +204,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     name: "Instagram",
     origin: "https://www.instagram.com",
     affixes: ["instagram", "insta"],
+  },
+  "itch.io": {
+    name: "Itch.io",
+    origin: "https://itch.io",
+    search: "/search?q=%s",
+    affixes: ["itch"],
   },
   "kagi.com": {
     name: "Kagi",
@@ -210,6 +240,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     origin: "https://www.mojeek.com",
     search: "/search?q=%s",
     affixes: ["mojeek"],
+  },
+  "music.amazon.com": {
+    name: "Amazon Music",
+    origin: "https://music.amazon.com",
+    search: "/search/%s",
+    affixes: ["amazonmusic"],
   },
   "music.youtube.com": {
     name: "YouTube Music",
@@ -259,6 +295,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     search: "/?q=%s",
     affixes: ["metasearx", "searx"],
   },
+  "soundcloud.com": {
+    name: "SoundCloud",
+    origin: "https://soundcloud.com",
+    search: "/search?q=%s",
+    affixes: ["soundcloud"],
+  },
   "spotify.com": {
     name: "Spotify",
     origin: "https://open.spotify.com",
@@ -276,6 +318,18 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     origin: "https://www.startpage.com",
     search: "/sp/search?q=%s",
     affixes: ["startpage"],
+  },
+  "steampowered.com": {
+    name: "Steam",
+    origin: "https://store.steampowered.com",
+    search: "/search?term=%s",
+    affixes: ["steam", "steampowered"],
+  },
+  "tidal.com": {
+    name: "Tidal",
+    origin: "https://tidal.com",
+    search: "/search?q=%s",
+    affixes: ["tidal"],
   },
   "tiktok.com": {
     name: "TikTok",
