@@ -17,6 +17,10 @@ export async function getProvider(query: string) {
     return new EmptyProvider()
   }
 
+  if (q.startsWith("/")) {
+    return new CommandProvider(q.slice(1).trim())
+  }
+
   if (query.endsWith(" ")) {
     const defaultSearchEngine = baseProviders["startpage.com"]
 
@@ -26,10 +30,6 @@ export async function getProvider(query: string) {
       defaultSearchEngine.search!,
       "",
     )
-  }
-
-  if (q.startsWith("/")) {
-    return new CommandProvider(q.slice(1).trim())
   }
 
   if (q.startsWith("=")) {
