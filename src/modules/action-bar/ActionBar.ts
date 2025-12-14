@@ -30,6 +30,7 @@ export class ActionBar
   #input: HTMLInputElement | null = null
   #reset: HTMLButtonElement | null = null
   #submit: HTMLButtonElement | null = null
+  #bar: HTMLElement | null = null
   #provider:
     | EmptyProvider
     | CalcProvider
@@ -56,6 +57,7 @@ export class ActionBar
     this.#input = shadow.querySelector("input")
     this.#reset = shadow.querySelector('button[type="reset"]')
     this.#submit = shadow.querySelector('button[type="submit"]')
+    this.#bar = shadow.getElementById("bar")
 
     this.#registerHandlers()
   }
@@ -63,12 +65,6 @@ export class ActionBar
   async handleInput(e: Event) {
     const target = e.currentTarget as HTMLInputElement
     this.#provider = await getProvider(target.value)
-    target.className =
-      this.#provider instanceof CommandProvider
-        ? "command"
-        : this.#provider instanceof DefaultProvider
-          ? ""
-          : "special"
 
     this.#updateIcon(await this.#provider.icon)
   }
@@ -138,6 +134,13 @@ export class ActionBar
 
     this.#reset.disabled = this.#provider instanceof EmptyProvider
     this.#submit.disabled = this.#provider instanceof EmptyProvider
+
+    this.#bar!.className =
+      this.#provider instanceof CommandProvider
+        ? "command"
+        : this.#provider instanceof DefaultProvider
+          ? ""
+          : "special"
   }
 
   #registerHandlers() {

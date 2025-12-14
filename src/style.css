@@ -38,7 +38,7 @@
   --color-bg-max: hsl(var(--hue), var(--saturation), 14%);
   --color-fg-primary: var(--color-bg);
   --color-fg-primary: #ff9500;
-  --color-fg-secondary: #4d97ff;
+  --color-fg-secondary: #66a6ff;
 }
 
 .light {
