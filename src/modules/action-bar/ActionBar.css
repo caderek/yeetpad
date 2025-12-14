@@ -83,6 +83,10 @@ input {
   width: 100%;
 }
 
+input.special {
+  color: var(--color-bg-primary);
+}
+
 input:focus {
   outline: none;
 }

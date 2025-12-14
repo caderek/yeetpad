@@ -17,6 +17,7 @@ import type { SearchProvider } from "./logic/providers/SearchProvider"
 import { getProvider } from "./logic/getProvider"
 import { executeQuery } from "./logic/executeQuery"
 import type { IconData } from "./logic/providers/interfaces"
+import { DefaultProvider } from "./logic/providers/DefaultProvider"
 
 const stylesheet = initializeStylesheet(css)
 const emptyProvider = new EmptyProvider()
@@ -62,6 +63,8 @@ export class ActionBar
   async handleInput(e: Event) {
     const target = e.currentTarget as HTMLInputElement
     this.#provider = await getProvider(target.value)
+    target.className =
+      this.#provider instanceof DefaultProvider ? "" : "special"
 
     this.#updateIcon(await this.#provider.icon)
   }

@@ -4,6 +4,7 @@ import { isEmail } from "./isEmail"
 import { baseProviders } from "./providers/base"
 import { CalcProvider } from "./providers/CalcProvider"
 import { CommandProvider } from "./providers/CommandProvider"
+import { DefaultProvider } from "./providers/DefaultProvider"
 import { DirectProvider } from "./providers/DirectProvider"
 import { EmptyProvider } from "./providers/EmptyProvider"
 import { MailProvider } from "./providers/MailProvider"
@@ -19,7 +20,7 @@ export async function getProvider(query: string) {
   if (query.endsWith(" ")) {
     const defaultSearchEngine = baseProviders["startpage.com"]
 
-    return new SearchProvider(
+    return new DefaultProvider(
       q.slice(0, -1).trim(),
       defaultSearchEngine.origin,
       defaultSearchEngine.search!,
@@ -103,7 +104,7 @@ export async function getProvider(query: string) {
 
   const defaultSearchEngine = baseProviders["startpage.com"]
 
-  return new SearchProvider(
+  return new DefaultProvider(
     q,
     defaultSearchEngine.origin,
     defaultSearchEngine.search!,
