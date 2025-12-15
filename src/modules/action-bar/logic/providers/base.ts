@@ -265,6 +265,13 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     search: "/?q=%s",
     affixes: ["perplexity"],
   },
+  "lexaloffle.com:pico8": {
+    name: "Pico8",
+    origin: "https://www.lexaloffle.com/pico-8.php",
+    search:
+      "https://www.lexaloffle.com/bbs/?cat=7&carts_tab=1&#sub=2&mode=carts&orderby=featured&search=%s",
+    affixes: ["pico8"],
+  },
   "pinterest.com": {
     name: "Pinterest",
     origin: "https://pl.pinterest.com",
