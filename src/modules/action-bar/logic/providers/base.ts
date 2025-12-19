@@ -241,6 +241,11 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     search: "/search?q=%s",
     affixes: ["mojeek"],
   },
+  "monkeytype.com": {
+    name: "Monkeytype",
+    origin: "https://monkeytype.com",
+    affixes: ["mt", "monkeytype"],
+  },
   "music.amazon.com": {
     name: "Amazon Music",
     origin: "https://music.amazon.com",
