@@ -316,7 +316,7 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
   "spotify.com": {
     name: "Spotify",
     origin: "https://open.spotify.com",
-    search: "/search/%s",
+    searh: "/search/%s",
     affixes: ["spotify", "sp"],
   },
   "stackoverflow.com": {
@@ -348,6 +348,12 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     origin: "https://www.tiktok.com",
     search: "/search?q=%s",
     affixes: ["tiktok"],
+  },
+  "twitch.tv": {
+    name: "Twitch",
+    origin: "https://www.twitch.tv",
+    search: "/search?term=%s",
+    affixes: ["twitch"],
   },
   "x.com": {
     name: "X",

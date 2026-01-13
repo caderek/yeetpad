@@ -35,7 +35,7 @@ export async function executeQuery(
         value: `=${result}`,
       }
     } else {
-      provider = result // If the calculation can't be done via API, assign SearchProvider (wolphram Alpha)
+      provider = result // If the calculation can't be done via API, assign SearchProvider (WolframAlpha)
     }
   }
 
