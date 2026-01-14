@@ -337,6 +337,11 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
     search: "/search?term=%s",
     affixes: ["steam", "steampowered"],
   },
+  "temp-mail.org": {
+    name: "TempMail",
+    origin: "https://temp-mail.org/en/",
+    affixes: ["tempmail"],
+  },
   "tidal.com": {
     name: "Tidal",
     origin: "https://tidal.com",
