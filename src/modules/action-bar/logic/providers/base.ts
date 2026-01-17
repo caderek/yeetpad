@@ -316,7 +316,7 @@ export const baseProviders: { [key: string]: WebsiteInfo } = {
   "spotify.com": {
     name: "Spotify",
     origin: "https://open.spotify.com",
-    searh: "/search/%s",
+    search: "/search/%s",
     affixes: ["spotify", "sp"],
   },
   "stackoverflow.com": {
